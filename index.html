@@ -1,0 +1,2369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class of Makanature 2025</title>
+    <link rel="shortcut icon" href="MakakalikasanIcon/MakakalikasanLogo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --uniform-black: #0a0a0a;
+            --uniform-white: #f9f6f0;
+            --uniform-blue: #4169e1;
+            --uniform-pink: #ff2d75;
+            --gold-accent: #ffd700;
+            --silver-accent: #c0c0c0;
+            --text-dark: #222;
+            --text-light: #f8f8f8;
+            --neon-blue: #00f2ff;
+            --neon-pink: #ff00e6;
+            --primary: #6a5acd;
+            --secondary: #3498db;
+            --accent: #e84393;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --memory-blue: #4b9cd3;
+            --memory-pink: #ff6b6b;
+            --memory-yellow: #ffd166;
+            --memory-green: #06d6a0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        section {
+            padding: 4rem 2rem;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        /* Futuristic Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--uniform-black);
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, var(--uniform-blue), var(--uniform-pink));
+            border-radius: 10px;
+            border: 2px solid var(--uniform-black);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink));
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        /* Cyberpunk Preloader Animation */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--uniform-black);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            overflow: hidden;
+        }
+        
+        .floating-images-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .floating-image {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 5px;
+            object-fit: cover;
+            border: 2px solid;
+            filter: drop-shadow(0 0 5px currentColor);
+            opacity: 0;
+            animation: float-image 15s linear infinite;
+        }
+
+        @keyframes float-image {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(var(--end-x), var(--end-y)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .preloader.fade-out {
+            opacity: 0;
+        }
+        
+        .loader {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink));
+            animation: spin 5s linear infinite;
+            box-shadow: 0 0 20px var(--neon-blue), 
+                        0 0 40px var(--neon-pink);
+        }
+
+        .loader::before {
+            content: '';
+            position: absolute;
+            inset: 10px;
+            background: var(--uniform-black);
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .loader::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink));
+            filter: blur(20px);
+            z-index: 1;
+        }
+
+        /* style for the logo */
+        .loader-logo {
+            position: absolute;
+            width: 105px;
+            height: 90px;
+            top: 46.7%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            animation: pulse 2s infinite alternate;
+        }
+
+        .loader-with-logo {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin-bottom: 30px;
+        }
+
+        .loader-logo-center {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                filter: drop-shadow(0 0 5px rgba(0, 242, 255, 0.5));
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.1);
+                filter: drop-shadow(0 0 15px rgba(255, 0, 230, 0.7));
+            }
+        }
+
+        .circular-loader {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(transparent 0% 20%, var(--neon-blue) 20% 40%, transparent 40% 60%, var(--neon-pink) 60% 80%, transparent 80% 100%);
+            animation: spin 1.5s linear infinite;
+            filter: blur(8px);
+        }
+
+        .loading-text {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            color: var(--uniform-white);
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .loading-text::after {
+            content: '...';
+            position: absolute;
+            animation: dots 1.5s steps(5, end) infinite;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin: 0 auto 3rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.9), rgba(44, 62, 80, 0.9)), 
+                        url('Album/Gallery/HeadingPhotoCollage.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        .header-content p {
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            opacity: 0.9;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .header-content .date {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Header emoji */
+        .header-emoji {
+            position: absolute;
+            font-size: 24px;
+            pointer-events: none;
+            z-index: 10;
+            animation: float-up 3s ease-out forwards;
+            text-shadow: 0 0 10px currentColor;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-150px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: rgba(106, 90, 205, 0.95);
+        }
+
+        nav.scrolled a {
+            color: white;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav.scrolled .logo {
+            color: white;
+        }
+
+        nav.scrolled .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        nav.scrolled .nav-links a::after {
+            background-color: white;
+        }
+
+        /* Album Animation */
+        #intro {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .album-container {
+            width: 80%;
+            max-width: 900px;
+            height: 600px;
+            margin: 0 auto;
+            position: relative;
+            perspective: 1200px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5),
+                        inset 0 0 50px rgba(65, 105, 225, 0.2),
+                        inset 0 0 50px rgba(255, 45, 117, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.1);
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .photo-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform-style: preserve-3d;
+            opacity: 0;
+            z-index: 1;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .photo-slide.active {
+            opacity: 1;
+            z-index: 10;
+            transform: translate3d(0, 0, 0) rotateY(0deg) scale(1);
+            box-shadow: 0 0 30px rgba(65, 105, 225, 0.5),
+                        0 0 30px rgba(255, 45, 117, 0.5);
+        }
+
+        .photo-slide.prev {
+            opacity: 0.8;
+            transform: translate3d(-50%, 0, -150px) rotateY(-15deg) scale(0.9);
+            z-index: 9;
+            filter: brightness(0.7) saturate(0.8);
+            box-shadow: 0 0 20px rgba(65, 105, 225, 0.3);
+        }
+
+        .photo-slide.next {
+            opacity: 0.8;
+            transform: translate3d(50%, 0, -150px) rotateY(15deg) scale(0.9);
+            z-index: 9;
+            filter: brightness(0.7) saturate(0.8);
+            box-shadow: 0 0 20px rgba(255, 45, 117, 0.3);
+        }
+
+        .photo-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s ease;
+        }
+
+        .album-controls {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .album-btn {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #4169e1;
+            color: var(--uniform-white);
+            border: 2px solid rgba(255,255,255,0.2);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .album-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--uniform-blue), var(--uniform-pink), var(--uniform-pink));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .album-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(65, 105, 225, 0.5),
+                        0 10px 30px rgba(255, 45, 117, 0.5);
+            border-color: transparent;
+        }
+        .album-btn:hover::before {
+            opacity: 1;
+        }
+        .album-btn i {
+            transition: transform 0.3s ease;
+        }
+        .album-btn:hover i {
+            transform: scale(1.2);
+        }
+        .prev-btn:hover i {
+            transform: translateX(-5px) scale(1.2);
+        }
+        .next-btn:hover i {
+            transform: translateX(5px) scale(1.2);
+        }
+
+        /* 3D Perspective Effect */
+        .album-container {
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+        }
+
+        /* Particle Effect */
+        .album-particle {
+            position: absolute;
+            pointer-events: none;
+            border-radius: 50%;
+            z-index: 100;
+            animation: particle-fly 1.5s ease-out forwards;
+        }
+
+        @keyframes particle-fly {
+            0% {
+                transform: translate(0, 0) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(1);
+                opacity: 0;
+            }
+        }
+    
+        /* Glow Effect */
+        .photo-slide.active {
+            box-shadow: 0 0 40px rgba(65, 105, 225, 0.7),
+                        0 0 70px rgba(255, 45, 117, 0.7);
+            transition: box-shadow 0.8s ease;
+        }
+
+        /* Floating emoji */
+        .album-emoji {
+            position: absolute;
+            font-size: 24px;
+            pointer-events: none;
+            z-index: 100;
+            animation: float-up 2s ease-out forwards;
+            text-shadow: 0 0 10px currentColor;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Classmates Section */
+        #classmates {
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #classmates::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(135deg, transparent 48%, rgba(65, 105, 225, 0.05) 49%, rgba(65, 105, 225, 0.05) 51%, transparent 52%),
+                linear-gradient(-135deg, transparent 48%, rgba(255, 45, 117, 0.05) 49%, rgba(255, 45, 117, 0.05) 51%, transparent 52%);
+            background-size: 50px 50px;
+            opacity: 0.3;
+            pointer-events: none;
+            animation: gridMove 30s linear infinite;
+        }
+
+        .classmates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .classmate-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            height: 320px;
+            background: rgba(20, 20, 20, 0.7);
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .classmate-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(65, 105, 225, 0.1), rgba(255, 45, 117, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .classmate-card:hover::before {
+            opacity: 1;
+        }
+
+        .classmate-card.male {
+            border-bottom: 5px solid var(--uniform-blue);
+            box-shadow: 0 10px 30px rgba(65, 105, 225, 0.2);
+        }
+
+        .classmate-card.female {
+            border-bottom: 5px solid var(--uniform-pink);
+            box-shadow: 0 10px 30px rgba(255, 45, 117, 0.2);
+        }
+
+        .classmate-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 50px rgba(65, 105, 225, 0.4),
+                        0 20px 50px rgba(255, 45, 117, 0.4);
+        }
+
+        .classmate-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease, filter 0.5s ease;
+        }
+
+        .classmate-card:hover .classmate-img {
+            transform: scale(1.1);
+            filter: brightness(1.1) contrast(1.1);
+        }
+
+        .classmate-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(10, 10, 10, 0.95));
+            color: var(--uniform-white);
+            padding: 2rem 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: 2;
+        }
+
+        .classmate-card:hover .classmate-info {
+            transform: translateY(0);
+        }
+        .classmate-name {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--uniform-white);
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .classmate-card.male .classmate-name {
+            color: var(--uniform-blue);
+        }
+
+        .classmate-card.female .classmate-name {
+            color: var(--uniform-pink);
+        }
+
+        .classmate-quote {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Teachers Section */
+        #teachers {
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+        }
+
+        .teachers-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .teacher-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .teacher-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .teacher-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .teacher-subject {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .teacher-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .subject-description {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .teacher-footer {
+            padding: 1rem;
+            background-color: #f8f9fa;
+            text-align: center;
+            font-style: italic;
+            color: #666;
+        }
+
+        /* Neon Memories Section */
+        #memories {
+            background: rgb(226, 226, 226);
+            position: relative;
+        }
+        #memories::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+            opacity: 0.05;
+            z-index: 0;
+        }
+        .memory-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+        .memory-content p {
+            margin-bottom: 2rem;
+            text-align: justify;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .memory-content p::before {
+            content: '❧';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent);
+            font-size: 1.5rem;
+            opacity: 0.5;
+        }
+        .memory-content p.in-view::before {
+            height: 100%;
+        }
+        .memory-highlight {
+            background: linear-gradient(to right, rgba(65, 105, 225, 0.2), rgba(255, 45, 117, 0.2));
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-weight: 600;
+            color: var(--uniform-white);
+            position: relative;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .memory-highlight:hover {
+            background: linear-gradient(to right, rgba(65, 105, 225, 0.4), rgba(255, 45, 117, 0.4));
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(65, 105, 225, 0.3),
+                        0 5px 15px rgba(255, 45, 117, 0.3);
+        }
+        /* Floating Emojis */
+        .floating-emoji {
+            position: absolute;
+            font-size: 28px;
+            opacity: 0;
+            animation: float-around 15s linear infinite;
+            z-index: 0;
+            pointer-events: none;
+            text-shadow: 0 0 10px currentColor;
+        }
+        @keyframes float-around {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(150px, -150px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Gallery Section */
+        #gallery {
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            aspect-ratio: 1;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img, .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img, .gallery-item:hover video {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .video-container {
+            grid-column: 1 / -1;
+            margin-top: 2rem;
+        }
+
+        .memory-video {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content h2 {
+            color: var(--accent);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .footer-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        /* Confetti Emoji Styles */
+        .confetti-emoji {
+            position: absolute;
+            pointer-events: none;
+            font-size: 28px;
+            animation: float-up 2s ease-out forwards;
+            z-index: 1000;
+            text-shadow: 0 0 10px currentColor;
+        }
+        @keyframes float-up {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-150px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Glitch Effect */
+        .glitch {
+            position: relative;
+        }
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+        .glitch::before {
+            color: var(--uniform-blue);
+            z-index: -1;
+            animation: glitch-effect 3s infinite;
+        }
+        .glitch::after {
+            color: var(--uniform-pink);
+            z-index: -2;
+            animation: glitch-effect 2s infinite reverse;
+        }
+        @keyframes glitch-effect {
+            0% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(-3px, -3px); }
+            60% { transform: translate(3px, 3px); }
+            80% { transform: translate(3px, -3px); }
+            100% { transform: translate(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+                gap: 1rem;
+            }
+
+            .album-container {
+                width: 95%;
+                height: 400px;
+            }
+
+            .teachers-container {
+                grid-template-columns: 1fr;
+            }
+
+            .classmates-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .memory-content {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="floating-images-container" id="floatingImages"></div>
+    
+    <div class="loader-with-logo">
+        <div class="circular-loader"></div>
+        <img src="MakakalikasanIcon/Logo.png" class="loader-logo-center" alt="Makanature Logo">
+    </div>
+    
+    <div class="loading-text">INITIALIZING MEMORIES</div>
+</div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><img src="MakakalikasanIcon/Logo.png" alt="Logo">MAKA<span>NATURE</span></div>
+        </div>
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <h1 class="float-animation">Our Graduation Journey</h1>
+            <p>Celebrating the memories, laughter, and bonds we've built together</p>
+            <p class="date">April 15, 2025</p>
+        </div>
+    </header>
+
+    <!-- Album Animation -->
+    <section id="intro">
+        <h2 class="section-title">Our Journey in Pictures</h2>
+        <div class="album-container">
+
+            <div class="photo-slide">
+                <img src="Album/GraduationClassPic.jpg" alt="Class photo">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/GraduationPic.jpg" alt="Friends together">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/BATB-GradPic.jpg" alt="Classroom moments">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/WorkImmersionPic.png" alt="Celebration">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/WorkImmersionPic-001.png" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/Before-Toga.jpg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/Group-Pic(not complete).jpg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/WorkImmersionPic-002.jpg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/WorkImmersionGroupPic.jpeg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/BestTeacher.jpg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/Intercultural-Dance.jpg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/Year-End-Party.jpeg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/Grade-11-Makakalikasan.jpeg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/Practice.jpeg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/Practice001.jpeg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/Practice002.jpeg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/FirstPhotoWithHer.jpeg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/PickUpCard.jpg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/Pubmat.jpg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/WorkImmersionGroupPic-001.jpeg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/Movie-Class.jpg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/Both.jpg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/Dance.jpeg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/Dance002.jpeg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/TeachersDay.jpg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/TeachrsDay-001.jpg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/GroupPicBATB.jpg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/3Boyz.jpg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/Report.jpg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/Report002.jpg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/BoyzAtTheBack.jpg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/BasecoPic.jpg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/BackBoyz.jpeg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/Gallery/FirstExam.jpg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/DancePic.jpeg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/DancePic001.jpeg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/DancePic003.jpeg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/DancePic002.jpeg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/KaraokPic.jpeg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/ClasspicBestTeacher.jpeg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/ClasspicBestTeacher001.jpeg" alt="School memories">
+            </div>
+            <div class="photo-slide">
+                <img src="Album/WorkImmersionPic.jpeg" alt="School memories">
+            </div>
+        </div>
+        <div class="album-controls">
+            <button class="album-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+            <button class="album-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+<!-- ===== Classmates Section ===== -->
+<section id="classmates">
+    <div class="section-title">
+        <h2 data-shadow="OUR AMAZING CLASS">OUR AMAZING CLASS</h2>
+    </div>
+    <div class="classmates-grid">
+
+        <!-- Male classmates -->
+        <div class="classmate-card male">
+            <img class="classmate-img" src="Classmate-Picture/Bilecario.jpg" alt="BELICARIO">
+            <div class="classmate-info">
+                <h4 class="classmate-name">BELICARIO</h4>            
+            </div>
+        </div>
+        <div class="classmate-card male">
+            <img class="classmate-img" src="Classmate-Picture/Cuntapay.jpg" alt="CUNTAPAY">
+            <div class="classmate-info">
+                <h4 class="classmate-name">CUNTAPAY</h4>            
+            </div>
+        </div>
+        <div class="classmate-card male">
+            <img class="classmate-img" src="Classmate-Picture/Deguzman.jpg" alt="DE GUZMAN">
+            <div class="classmate-info">
+                <h4 class="classmate-name">DE GUZMAN</h4>            
+            </div>
+        </div>
+        <div class="classmate-card male">
+            <img class="classmate-img" src="Classmate-Picture/Gagatam.jpg" alt="GAGATAM">
+            <div class="classmate-info">
+                <h4 class="classmate-name">GAGATAM</h4>            
+            </div>
+        </div>
+        <div class="classmate-card male">
+            <img class="classmate-img" src="Classmate-Picture/Lareda.jpg" alt="LAREDA">
+            <div class="classmate-info">
+                <h4 class="classmate-name">LAREDA</h4>            
+            </div>
+        </div>
+        <div class="classmate-card male">
+            <img class="classmate-img" src="Classmate-Picture/Naga.jpg" alt="NAGA">
+            <div class="classmate-info">
+                <h4 class="classmate-name">NAGA</h4>            
+            </div>
+        </div>
+        <div class="classmate-card male">
+            <img class="classmate-img" src="Classmate-Picture/Nakila.jpg" alt="NAKILA">
+            <div class="classmate-info">
+                <h4 class="classmate-name">NAKILA</h4>            
+            </div>
+        </div>
+        <div class="classmate-card male">
+            <img class="classmate-img" src="Classmate-Picture/Picardal.jpg" alt="PICARDAL">
+            <div class="classmate-info">
+                <h4 class="classmate-name">PICARDAL</h4>            
+            </div>
+        </div>
+        <div class="classmate-card male">
+            <img class="classmate-img" src="Classmate-Picture/Salve.jpg" alt="SALVE">
+            <div class="classmate-info">
+                <h4 class="classmate-name">SALVE</h4>            
+            </div>
+        </div>
+        <div class="classmate-card male">
+            <img class="classmate-img" src="Classmate-Picture/Joshua.jpg" alt="SENARILLOS">
+            <div class="classmate-info">
+                <h4 class="classmate-name">SENARILLOS</h4>            
+            </div>
+        </div>
+        <div class="classmate-card male">
+            <img class="classmate-img" src="Classmate-Picture/Sivilla.jpg" alt="SEVILLA">
+            <div class="classmate-info">
+                <h4 class="classmate-name">SEVILLA</h4>
+            </div>
+        </div>
+        <div class="classmate-card male">
+            <img class="classmate-img" src="Classmate-Picture/Jv.jpg" alt="SIERVO">
+            <div class="classmate-info">
+                <h4 class="classmate-name">SIERVO</h4>            
+            </div>
+        </div>
+        <div class="classmate-card male">
+            <img class="classmate-img" src="Classmate-Picture/Tagabi.jpg" alt="TAGABI">
+            <div class="classmate-info">
+                <h4 class="classmate-name">TAGABI</h4>            
+            </div>
+        </div>
+        <div class="classmate-card male">
+            <img class="classmate-img" src="Classmate-Picture/Tamayosa.jpg" alt="TAMAYOSA">
+            <div class="classmate-info">
+                <h4 class="classmate-name">TAMAYOSA</h4>            
+            </div>
+        </div>
+        <div class="classmate-card male">
+            <img class="classmate-img" src="Classmate-Picture/Villarin.jpg" alt="VILLARIN">
+            <div class="classmate-info">
+                <h4 class="classmate-name">VILLARIN</h4>            
+            </div>
+        </div>
+
+        <!-- Girls -->
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/Jewell.jpg" alt="ARRIESGADO">
+            <div class="classmate-info">
+                <h4 class="classmate-name">AKMAD</h4>            
+            </div>
+        </div>
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/Trisha.jpg" alt="ARRIESGADO">
+            <div class="classmate-info">
+                <h4 class="classmate-name">ARRIESGADO</h4>            
+            </div>
+        </div>
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/Baluyot.jpg" alt="BALUYOT">
+            <div class="classmate-info">
+                <h4 class="classmate-name">BALUYOT</h4>            
+            </div>
+        </div>
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/Caranto.jpg" alt="CARANTO">
+            <div class="classmate-info">
+                <h4 class="classmate-name">CARANTO</h4>            
+            </div>
+        </div>
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/Dapat.jpg" alt="DAPAT">
+            <div class="classmate-info">
+                <h4 class="classmate-name">DAPAT</h4>            
+            </div>
+        </div>
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/De Asa.jpg" alt="DE ASA">
+            <div class="classmate-info">
+                <h4 class="classmate-name">DE ASA</h4>            
+            </div>
+        </div>
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/Shiela.jpg" alt="DEL ROSARIO">
+            <div class="classmate-info">
+                <h4 class="classmate-name">DEL ROSARIO</h4>            
+            </div>
+        </div>
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/Francisco.jpg" alt="FRANCISCO">
+            <div class="classmate-info">
+                <h4 class="classmate-name">FRANCISCO</h4>            
+            </div>
+        </div>
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/Gariando.jpg" alt="GARIANDO">
+            <div class="classmate-info">
+                <h4 class="classmate-name">GARIANDO</h4>            
+            </div>
+        </div>
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/Hermo.jpg" alt="HERMO">
+            <div class="classmate-info">
+                <h4 class="classmate-name">HERMO</h4>            
+            </div>
+        </div>
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/Junio.jpg" alt="JUNIO">
+            <div class="classmate-info">
+                <h4 class="classmate-name">JUNIO</h4>            
+            </div>
+        </div>
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/Stephanie.jpg" alt="LAMBANA">
+            <div class="classmate-info">
+                <h4 class="classmate-name">LAMBANA</h4>            
+            </div>
+        </div>
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/Lasquite.jpg" alt="LASQUITE">
+            <div class="classmate-info">
+                <h4 class="classmate-name">LASQUITE</h4>            
+            </div>
+        </div>
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/Mallari.jpg" alt="MALLARI">
+            <div class="classmate-info">
+                <h4 class="classmate-name">MALLARI</h4>            
+            </div>
+        </div>
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/Cathie.jpg" alt="MARCIANO">
+            <div class="classmate-info">
+                <h4 class="classmate-name">MARCIANO</h4>            
+            </div>
+        </div>
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/Mimbala.jpg" alt="MIMBALA">
+            <div class="classmate-info">
+                <h4 class="classmate-name">MIMBALA</h4>            
+            </div>
+        </div>
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/Janin.jpg" alt="NAVARRO">
+            <div class="classmate-info">
+                <h4 class="classmate-name">NAVARRO</h4>            
+            </div>
+        </div>
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/Ocampo.jpg" alt="OCAMPO">
+            <div class="classmate-info">
+                <h4 class="classmate-name">OCAMPO</h4>            
+            </div>
+        </div>
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/Omandam.jpg" alt="OMANDAM">
+            <div class="classmate-info">
+                <h4 class="classmate-name">OMANDAM</h4>            
+            </div>
+        </div>
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/Charm.jpg" alt="PARICA">
+            <div class="classmate-info">
+                <h4 class="classmate-name">PARICA</h4>            
+            </div>
+        </div>
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/Perol.jpg" alt="PEROL">
+            <div class="classmate-info">
+                <h4 class="classmate-name">PEROL</h4>            
+            </div>
+        </div>
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/Salem.jpg" alt="SALEM">
+            <div class="classmate-info">
+                <h4 class="classmate-name">SALEM</h4>            
+            </div>
+        </div>
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/Sekak.jpg" alt="SEKAK">
+            <div class="classmate-info">
+                <h4 class="classmate-name">SEKAK</h4>            
+            </div>
+        </div>
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/Ursal.jpg" alt="URSAL">
+            <div class="classmate-info">
+                <h4 class="classmate-name">URSAL</h4>            
+            </div>
+        </div>
+        <div class="classmate-card female">
+            <img class="classmate-img" src="Classmate-Picture/Zaraga.jpg" alt="ZARAGA">
+            <div class="classmate-info">
+                <h4 class="classmate-name">ZARAGA</h4>            
+            </div>
+    </div>
+</section>
+
+    <!-- Teachers Section -->
+    <section id="teachers">
+        <h2 class="section-title">Our Wonderful Teachers</h2>
+        <div class="teachers-container">
+
+            <div class="teacher-card fade-in delay-2">
+                <div class="teacher-header">
+                    <h3 class="teacher-name">Sir. Flor</h3>
+                    <p class="teacher-subject">Practical Research 2</p>
+                </div>
+                <div class="teacher-body">
+                    <h4>Practical Research 2</h4>
+                    <p class="subject-description">Focuses on quantitative research methods, teaching students how to design, conduct, and present research studies.</p>
+                </div>
+                <div class="teacher-footer">
+                    "Research is formalized curiosity."
+                </div>
+            </div>
+
+
+            <div class="teacher-card fade-in">
+                <div class="teacher-header">
+                    <h3 class="teacher-name">Sir. Niel</h3>
+                    <p class="teacher-subject">CPAR & 21st Century Literature</p>
+                </div>
+                <div class="teacher-body">
+                    <h4>Contemporary Philippines Art from the Regions (CPAR)</h4>
+                    <p class="subject-description">Explores the diversity and richness of Philippine arts from different regions, fostering appreciation for local artistic expressions and cultural heritage.</p>
+                    <h4>21st Century Literature from Philippines and the World</h4>
+                    <p class="subject-description">Examines literary works from the Philippines and around the world in the context of 21st century themes and digital media influences.</p>
+                </div>
+                <div class="teacher-footer">
+                    "Art and literature are mirrors of our society."
+                </div>
+            </div>
+
+
+            <div class="teacher-card fade-in delay-1">
+                <div class="teacher-header">
+                    <h3 class="teacher-name">Sir. Makaraig</h3>
+                    <p class="teacher-subject">Understanding Culture, Society and Politics</p>
+                </div>
+                <div class="teacher-body">
+                    <h4>Understanding Culture, Society and Politics (UCSP)</h4>
+                    <p class="subject-description">Investigates human cultural variation, social differences, social change, and political identities to develop cultural awareness and sensitivity.</p>
+                </div>
+                <div class="teacher-footer">
+                    "Understand the world to change the world."
+                </div>
+            </div>
+
+
+            <div class="teacher-card fade-in delay-2">
+                <div class="teacher-header">
+                    <h3 class="teacher-name">Sir. Torres</h3>
+                    <p class="teacher-subject">Physical Education and Health</p>
+                </div>
+                <div class="teacher-body">
+                    <h4>Physical Education and Health (HOPE)</h4>
+                    <p class="subject-description">Focuses on fitness, sports, and health education to promote lifelong wellness and physical activity.</p>
+                </div>
+                <div class="teacher-footer">
+                    "A healthy body houses a healthy mind."
+                </div>
+            </div>
+
+
+            <div class="teacher-card fade-in delay-3">
+                <div class="teacher-header">
+                    <h3 class="teacher-name">Ma'am. Araneta</h3>
+                    <p class="teacher-subject">Physical Science</p>
+                </div>
+                <div class="teacher-body">
+                    <h4>Physical Science</h4>
+                    <p class="subject-description">Covers basic concepts of chemistry and physics, including matter, motion, energy, and the universe.</p>
+                </div>
+                <div class="teacher-footer">
+                    "Science is the poetry of reality."
+                </div>
+            </div>
+
+            <div class="teacher-card fade-in">
+                <div class="teacher-header">
+                    <h3 class="teacher-name">Ma'am. Ravis</h3>
+                    <p class="teacher-subject">EAPP & MIL</p>
+                </div>
+                <div class="teacher-body">
+                    <h4>English for Academic and Professional Purposes (EAPP)</h4>
+                    <p class="subject-description">Develops communication skills in academic and professional contexts, emphasizing critical reading and writing.</p>
+                    <h4>Media and Information Literacy (MIL)</h4>
+                    <p class="subject-description">Teaches how to access, analyze, evaluate, and create media content responsibly in the digital age.</p>
+                </div>
+                <div class="teacher-footer">
+                    "Words have power use them wisely."
+                </div>
+            </div>
+
+            <div class="teacher-card fade-in delay-1">
+                <div class="teacher-header">
+                    <h3 class="teacher-name">Ma'am. Viana</h3>
+                    <p class="teacher-subject">Filipino sa Piling Larang</p>
+                </div>
+                <div class="teacher-body">
+                    <h4>Filipino sa Piling Larang (FPL)</h4>
+                    <p class="subject-description">Enhances Filipino language skills in specific fields or tracks, focusing on technical and professional applications.</p>
+                </div>
+                <div class="teacher-footer">
+                    "Ang wika ay kaluluwa ng bayan."
+                </div>
+            </div>
+
+            <div class="teacher-card fade-in delay-3">
+                <div class="teacher-header">
+                    <h3 class="teacher-name">Sir. Vincent</h3>
+                    <p class="teacher-subject">Business Finance</p>
+                </div>
+                <div class="teacher-body">
+                    <h4>Business Finance</h4>
+                    <p class="subject-description">Introduces financial management principles, investment decisions, and financial planning for businesses.</p>
+                </div>
+                <div class="teacher-footer">
+                    "Finance is the art of passing money from hand to hand until it disappears."
+                </div>
+            </div>
+
+            <div class="teacher-card fade-in">
+                <div class="teacher-header">
+                    <h3 class="teacher-name">Ma'am. Rochelle</h3>
+                    <p class="teacher-subject">Marketing & Business Ethics</p>
+                </div>
+                <div class="teacher-body">
+                    <h4>Principles of Marketing</h4>
+                    <p class="subject-description">Covers fundamental marketing concepts, strategies, and consumer behavior in business contexts.</p>
+                    <h4>Business Ethics and Social Responsibility</h4>
+                    <p class="subject-description">Examines ethical decision-making and corporate social responsibility in business environments.</p>
+                </div>
+                <div class="teacher-footer">
+                    "Do well by doing good."
+                </div>
+            </div>
+
+            <div class="teacher-card fade-in delay-1">
+                <div class="teacher-header">
+                    <h3 class="teacher-name">Ma'am. Ramos</h3>
+                    <p class="teacher-subject">FABM 2</p>
+                </div>
+                <div class="teacher-body">
+                    <h4>Fundamentals of Accountancy, Business and Management 2</h4>
+                    <p class="subject-description">Provides foundational knowledge in accounting, business, and management principles for ABM students.</p>
+                </div>
+                <div class="teacher-footer">
+                    "Numbers tell the story of business."
+                </div>
+            </div>
+
+            <div class="teacher-card fade-in delay-2">
+                <div class="teacher-header">
+                    <h3 class="teacher-name">Sir. Erik</h3>
+                    <p class="teacher-subject">Work Immersion</p>
+                </div>
+                <div class="teacher-body">
+                    <h4>Work Immersion</h4>
+                    <p class="subject-description">Provides hands-on experience in real work environments to develop skills and prepare students for future careers.</p>
+                </div>
+                <div class="teacher-footer">
+                    "Experience is the best teacher."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memories Section -->
+    <section id="memories">
+        <h2 class="section-title">A Journey to Remember</h2>
+        <div class="memory-content">
+            <p>As I sit here reflecting on our journey from <span class="memory-highlight">Grade 11 to 12</span>, I'm overwhelmed by the memories that flood back each one a snapshot of moments that made this chapter of my life unforgettable. We weren't just classmates, we were a <span class="memory-highlight">family</span>, growing up together through laughter, nervousness, and victories.</p>
+        
+            <p>I remember how it all began in <span class="memory-highlight">Grade 11</span>. We were a group full of energy, curiosity, and hope. Even though we had the same class, <span class="memory-highlight">six new faces joined us in Grade 12</span> (two boys and four girls) and <span class="memory-highlight">eight classmates left</span>. Despite the changes, we stayed close, and the bond we built continued to grow.</p>
+        
+            <p>One of my favorite memories was when we watched <span class="memory-highlight">Elemental together</span>. That movie hit us all hard most of us <span class="memory-highlight">cried</span> over the emotional scenes, not afraid to show how much we were touched. It was one of those rare times we were completely quiet, just feeling together.</p>
+        
+            <p>And then, of course, came the <span class="memory-highlight">laughter during class reports</span>. Whenever someone was reporting and something funny happened, we couldn't hold it in. But when it was our turn, the <span class="memory-highlight">nervousness would kick in hard</span>. We'd glance at each other with those "please save me" looks, and somehow, we always managed to get through it.</p>
+        
+            <p>Our <span class="memory-highlight">Year End Party in Grade 11</span> was magical. From the <span class="memory-highlight">best smile (especially hers)</span>, to dancing, gaming, and our gift exchange it was pure joy. And who could forget when we <span class="memory-highlight">surprised Sir Flor on Teacher's Day</span> with simple gifts and shared meals. I still miss that moment the excitement, the teamwork, and the smiles we all had.</p>
+        
+            <p><span class="memory-highlight">Grade 12</span> was tougher but just as memorable. In <span class="memory-highlight">FABM</span>, we often found ourselves <span class="memory-highlight">copying from each other</span> when clueless about calculations. It wasn't laziness - we were leaning on each other, and that's what made it special.</p>
+        
+            <p>Our <span class="memory-highlight">dance practices</span> were legendary rehearsing <span class="memory-highlight">under the blazing sun in Intramuros</span>, even <span class="memory-highlight">under a bridge in light rain</span>. When we <span class="memory-highlight">won 2nd place in the Intercultural Dance Competition</span>, we screamed and jumped with joy. Sir Flor made it sweeter by surprising us with <span class="memory-highlight">ice cream</span>.</p>
+        
+            <p>Not all moments were perfect. Our <span class="memory-highlight">strict teacher</span> would send people out for laughing. There were <span class="memory-highlight">arguments</span> too, but we always found our way back to friendship.</p>
+        
+            <p>One memory I’ll never forget was on <span class="memory-highlight"> February 25, 2025  between 4:30–4:40 pm</span> in the afternoon. That was the moment I finally gathered the courage to confess to <span class="memory-highlight">her</span>. I was nervous, my thoughts were all over the place, and I didn`t know what the right words were but I gave it my best, so I spoke from the heart. Afterward, my friends were excited, asking me what happened. I told them, word for word, what she said. That day still plays in my mind like a movie. A few weeks later, we made a short film for our <span class="memory-highlight">MIL memory video</span>, We walked around, laughed, and filmed scenes that I later edited. Watching that video now feels like a time capsule of everything we shared.</p>
+        
+            <p>Our <span class="memory-highlight">Work Immersion (Jan 20-Feb 3)</span> was another adventure teachers cracking jokes while giving <span class="memory-highlight">ABM career advice</span>. Now at graduation, I'm <span class="memory-highlight">excited yet heartbroken</span>. I'll miss <span class="memory-highlight">her smile, her voice</span> all I have left is our <span class="memory-highlight">graduation photo</span>.</p>
+        
+            <p>The laughter, the tears, the dances, the shared food they're all part of <span class="memory-highlight">our story</span>. We may go separate ways, but I hope we'll meet again someday, still carrying these memories in our hearts.</p>
+        
+            <p>To the <span class="memory-highlight">Class of 2025 Makanature</span>, thank you for everything. I'll carry this with me forever.</p>
+        </div>        
+    </section>
+
+    <!-- ===== Gallery Section ===== -->
+<section id="gallery">
+    <h2 class="section-title">Gallery of Memories</h2>
+    <div class="gallery-container">
+        <div class="gallery-grid">
+
+            <!-- Grade 11 Memories -->
+
+            <div class="gallery-item">
+                <img src="Album/Movie-Class.jpg" alt="Watching Elemental">
+                <div class="gallery-caption">Movie Day</div>
+            </div>
+
+            <div class="gallery-item">
+                <video muted loop autoplay>
+                    <source src="Video1.1/Orentation.mp4" type="video/mp4">
+                </video>
+                <div class="gallery-caption"></div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="Album/Gallery/FirstExam.jpg" alt="Grade 11 Exam">
+                <div class="gallery-caption">Grade 11 Exam</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="Album/Grade11Pic.jpg" alt="Grade 11 Class">
+                <div class="gallery-caption">Grade 11 Picture</div>
+            </div>
+
+            <div class="gallery-item">
+                <video muted loop autoplay>
+                    <source src="Video1.2/Grade11.mp4" type="video/mp4">
+                </video>
+                <div class="gallery-caption">Grade 11 Memories</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="Album/TeachersDay.jpg" alt="Surprising Sir Flor">
+                <div class="gallery-caption">Teachers' Day Preparation</div>
+            </div>
+
+            <div class="gallery-item">
+                <video muted loop autoplay>
+                    <source src="Video/TeachersDayPreparation.mp4" type="video/mp4">
+                </video>
+                <div class="gallery-caption">Teachers Day Memories</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="Album/TeachrsDay-001.jpg" alt="Teachers Day">
+                <div class="gallery-caption">Teachers Day Suprise</div>
+            </div>
+
+            <div class="gallery-item">
+                <video muted loop autoplay>
+                    <source src="Video/TeachersDay.mp4" type="video/mp4">
+                </video>
+                <div class="gallery-caption">11 Makanature</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="Album/Gallery/Friday.jpeg">
+                <div class="gallery-caption">Catch up Friday</div>
+            </div>
+
+            <div class="gallery-item">
+                <video muted loop autoplay>
+                    <source src="Video1.0/11 Makakalikasan.mp4" type="video/mp4">
+                </video>
+                <div class="gallery-caption">Makakalikasan Class</div>
+            </div>
+
+            <div class="gallery-item">
+                <video muted loop autoplay>
+                    <source src="Video1.1/Cantata.mp4" type="video/mp4">
+                </video>
+                <div class="gallery-caption">Cantata</div>
+            </div>
+
+            <div class="gallery-item">
+                <video muted loop autoplay>
+                    <source src="Video/Year End Party.mp4" type="video/mp4">
+                </video>
+                <div class="gallery-caption">Year End Party</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="Album/Year-End-Party.jpeg" alt="Year End Party">
+                <div class="gallery-caption">Best Smile Awards</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="Album/Practice001.jpeg" alt="Dance Practice">
+                <div class="gallery-caption">Under the Bridge Rehearsals</div>
+            </div>
+
+            <div class="gallery-item">
+                <video muted loop autoplay>
+                    <source src="Video1.0/Classmates.mp4" type="video/mp4">
+                </video>
+                <div class="gallery-caption">Grade 11</div>
+            </div>
+
+            <!-- Grade 12 Memories -->
+
+            <div class="gallery-item">
+                <img src="Album/Dance001.jpeg">
+                <div class="gallery-caption"></div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="Album/Intercultural-Dance.jpg" alt="Dance Competition Win">
+                <div class="gallery-caption">Intercultural Dance</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="Album/ClasspicBestTeacher.jpeg">
+                <div class="gallery-caption">UCPS ClassPicture</div>
+            </div>
+
+
+            <div class="gallery-item">
+                <img src="Album/WorkImmersionPic-001.png">
+                <div class="gallery-caption">WorkImmersion</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="Album/WorkImmersionPic.png">
+                <div class="gallery-caption">WorkImmersion</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="Album/Gallery/ClassPicture.jpg">
+                <div class="gallery-caption">Class Picture</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="Album/GraduationPic.jpg">
+                <div class="gallery-caption">Graduation Pictures</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="Album/GraduationClassPic.jpg">
+                <div class="gallery-caption">Graduation Class Picture</div>
+            </div>
+
+            <div class="gallery-item">
+                <video muted loop autoplay>
+                    <source src="Video1.2/Makanature Graduation.mp4" type="video/mp4">
+                </video>
+                <div class="gallery-caption">Graduation Makanature</div>
+            </div>
+            
+            
+        </div>
+    
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h2>Makanature 2023-2025</h2>
+            <p>Forever in our hearts</p>
+            <div class="footer-links">
+                <a href="https://github.com/Edmar2003" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+            <p class="copyright">2025 Graduation Memories.</p>
+        </div>
+    </footer>
+
+    <script>
+
+        // Enhanced Cyberpunk Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.querySelector('.preloader');
+            const loadingText = document.querySelector('.loading-text');
+            
+            // Add dots animation
+            let dots = '';
+            const dotInterval = setInterval(() => {
+                dots = dots.length < 3 ? dots + '.' : '';
+                loadingText.textContent = 'WELCOME MAKANATURE' + dots;
+            }, 500);
+            
+            setTimeout(() => {
+                clearInterval(dotInterval);
+                preloader.classList.add('fade-out');
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                    
+                    // Launch initial confetti
+                    confetti({
+                        particleCount: 200,
+                        spread: 100,
+                        origin: { y: 0.6 },
+                        colors: ['#4169e1', '#ff2d75', '#ffd700', '#ffffff'],
+                        shapes: ['circle', 'heart', 'star']
+                    });
+                }, 800);
+            }, 15000);
+        });
+
+        // Floating images in preloader
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('floatingImages');
+            const imageUrls = [
+                'Album/Gallery/ClassPicture.jpg',
+                'Album/Gallery/FirstExam.jpg',
+                'Album/Gallery/Friday.jpg',
+                'Album/Gallery/Grade11Picture.jpg',
+                'Album/Gallery/PhotoWithHer.jpg',
+                'Album/BasecoPic.jpg',
+                'Album/Year-End-Party.jpeg',
+                'Album/WorkImmersionPic.png',
+                'Album/WorkImmersionGroupPic-001.jpeg',
+                'Album/Practice001.jpeg',
+                'Album/Intercultural-Dance.jpg',
+                'Album/GraduationPic.jpg',
+                'Album/GraduationClassPic.jpg'
+                
+            ];
+
+            const colors = ['#00f2ff', '#ff00e6', '#4169e1', '#ff2d75'];
+
+            // Create 12 floating images
+            for (let i = 0; i < 12; i++) {
+                const img = document.createElement('img');
+                img.className = 'floating-image';
+
+                // Random properties
+                const randomImage = imageUrls[Math.floor(Math.random() * imageUrls.length)];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const size = 40 + Math.random() * 40;
+                const delay = Math.random() * 15;
+                const duration = 10 + Math.random() * 10;
+
+                // Set start and end positions
+                const startX = Math.random() * 100;
+                const startY = Math.random() * 100;
+                const endX = (Math.random() - 0.5) * 200;
+                const endY = (Math.random() - 0.5) * 200;
+
+                img.src = randomImage;
+                img.style.width = `${size}px`;
+                img.style.height = `${size}px`;
+                img.style.borderColor = color;
+                img.style.setProperty('--end-x', `${endX}px`);
+                img.style.setProperty('--end-y', `${endY}px`);
+                img.style.left = `${startX}%`;
+                img.style.top = `${startY}%`;
+                img.style.animationDelay = `${delay}s`;
+                img.style.animationDuration = `${duration}s`;
+
+                container.appendChild(img);
+            }
+        });
+
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+
+    
+        // Add emoji effects to album buttons
+        const albumButtons = document.querySelectorAll('.album-btn');
+        const emojis = ['📸', '🎞️', '🫶🏻', '🎓', '📜', '✨', '🔵', '🌸', '👾', '💖'];
+    
+        albumButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                const rect = button.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                // Create multiple emojis
+                for (let i = 0; i < 5; i++) {
+                    createAlbumEmoji(button, x, y);
+                }
+            });
+        });
+
+        function createAlbumEmoji(button, x, y) {
+            const emoji = document.createElement('div');
+            emoji.className = 'album-emoji';
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.left = `${x}px`;
+            emoji.style.top = `${y}px`;
+            emoji.style.color = Math.random() > 0.5 ? '#00f2ff' : '#ff00e6';
+            emoji.style.fontSize = `${20 + Math.random() * 20}px`;
+            emoji.style.animationDuration = `${1 + Math.random() * 2}s`;
+
+            button.appendChild(emoji);
+
+            // Remove after animation completes
+            setTimeout(() => {
+                emoji.remove();
+            }, 2000);
+        }
+
+        // Photo Album Animation
+        const photoSlides = document.querySelectorAll('.photo-slide');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        let currentSlide = 0;
+
+        function showSlide(n) {
+            photoSlides.forEach(slide => {
+                slide.classList.remove('active', 'prev', 'next');
+            });
+            
+            currentSlide = (n + photoSlides.length) % photoSlides.length;
+            
+            photoSlides[currentSlide].classList.add('active');
+            photoSlides[(currentSlide - 1 + photoSlides.length) % photoSlides.length].classList.add('prev');
+            photoSlides[(currentSlide + 1) % photoSlides.length].classList.add('next');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // Auto-rotate slides
+        let slideInterval = setInterval(nextSlide, 5000);
+
+        // Pause auto-rotation
+        const albumContainer = document.querySelector('.album-container');
+        albumContainer.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+
+        albumContainer.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(nextSlide, 5000);
+        });
+        
+        // 3D Perspective Effect
+        
+        albumContainer.addEventListener('mousemove', (e) => {
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+            albumContainer.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+        
+        albumContainer.addEventListener('mouseleave', () => {
+            albumContainer.style.transform = 'rotateY(0) rotateX(0)';
+        });
+        
+        // Enhanced Navigation Effects
+        function showSlide(n) {
+            // Create particle explosion
+            createParticleBurst();
+            
+            // Create emoji wave
+            createEmojiWave();
+            
+            // Original slide change code
+            photoSlides.forEach(slide => {
+                slide.classList.remove('active', 'prev', 'next');
+            });
+            
+            currentSlide = (n + photoSlides.length) % photoSlides.length;
+            
+            photoSlides[currentSlide].classList.add('active');
+            photoSlides[(currentSlide - 1 + photoSlides.length) % photoSlides.length].classList.add('prev');
+            photoSlides[(currentSlide + 1) % photoSlides.length].classList.add('next');
+            
+            // Add temporary glow effect
+            const activeSlide = document.querySelector('.photo-slide.active');
+            activeSlide.style.boxShadow = '0 0 80px rgba(65, 105, 225, 0.9), 0 0 120px rgba(255, 45, 117, 0.9)';
+            setTimeout(() => {
+                activeSlide.style.boxShadow = '0 0 40px rgba(65, 105, 225, 0.7), 0 0 70px rgba(255, 45, 117, 0.7)';
+            }, 500);
+        }
+        
+        // Particle Burst Effect
+        function createParticleBurst() {
+            const particles = 30;
+            const colors = ['#4169e1', '#ff2d75', '#00f2ff', '#ff00e6'];
+            
+            for (let i = 0; i < particles; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'album-particle';
+                
+                // Random properties
+                const size = Math.random() * 8 + 2;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 100 + 50;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.backgroundColor = color;
+                particle.style.setProperty('--tx', `${Math.cos(angle) * distance}px`);
+                particle.style.setProperty('--ty', `${Math.sin(angle) * distance}px`);
+                particle.style.left = '50%';
+                particle.style.top = '50%';
+                particle.style.animationDelay = `${Math.random() * 0.2}s`;
+                
+                albumContainer.appendChild(particle);
+                
+                // Remove after animation
+                setTimeout(() => {
+                    particle.remove();
+                }, 1500);
+            }
+        }
+        
+        // Emoji Wave Effect
+        function createEmojiWave() {
+            const emojis = ['📸', '🌟', '💖', '👾', '✨', '🎉', '🔥', '🌈'];
+            const count = 12;
+            
+            for (let i = 0; i < count; i++) {
+                const emoji = document.createElement('div');
+                emoji.className = 'album-emoji';
+                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                
+                // Position around the album
+                const angle = (i / count) * Math.PI * 2;
+                const distance = 100;
+                const x = 50 + Math.cos(angle) * distance;
+                const y = 50 + Math.sin(angle) * distance;
+                
+                emoji.style.left = `${x}%`;
+                emoji.style.top = `${y}%`;
+                emoji.style.color = i % 2 ? '#00f2ff' : '#ff00e6';
+                emoji.style.fontSize = `${20 + Math.random() * 20}px`;
+                emoji.style.animationDuration = `${1.5 + Math.random() * 1}s`;
+                emoji.style.transform = `translate(-50%, -50%)`;
+                
+                albumContainer.appendChild(emoji);
+                
+                // Remove after animation
+                setTimeout(() => {
+                    emoji.remove();
+                }, 2500);
+            }
+        }
+
+        // Initialize slides
+        showSlide(0);
+
+                // Classmates confetti effect
+            document.addEventListener('DOMContentLoaded', function() {
+            const boys = ['BELICARIO', 'CUNTAPAY', 'DE GUZMAN', 'GAGATAM', 'LAREDA', 'NAGA', 
+                         'NAKILA', 'PICARDAL', 'SALVE', 'SENARILLOS', 'SEVILLA', 'SIERVO', 
+                         'TAGABI', 'TAMAYOSA', 'VILLARIN'];
+            
+            const classmateCards = document.querySelectorAll('.classmate-card');
+            
+            classmateCards.forEach(card => {
+                const nameElement = card.querySelector('.classmate-name');
+                const name = nameElement ? nameElement.textContent.trim() : '';
+                const isBoy = boys.includes(name);
+                
+                // Click effect
+                card.addEventListener('click', function(e) {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    if (isBoy) {
+                        // Blue cyberpunk confetti for boys
+                        confetti({
+                            particleCount: 50,
+                            spread: 70,
+                            origin: { x: x/rect.width, y: y/rect.height },
+                            colors: ['#4169e1', '#00f2ff', '#1e90ff'],
+                            shapes: ['circle', 'star']
+                        });
+                        
+                        // Add cyber emoji
+                        createFloatingEmoji(card, '👾', x, y, '#00f2ff');
+                    } else {
+                        // Pink cyberpunk confetti for girls
+                        confetti({
+                            particleCount: 50,
+                            spread: 70,
+                            origin: { x: x/rect.width, y: y/rect.height },
+                            colors: ['#ff2d75', '#ff00e6', '#ff69b4'],
+                            shapes: ['heart', 'circle']
+                        });
+                        
+                        // Add heart emoji
+                        createFloatingEmoji(card, '💖', x, y, '#ff00e6');
+                    }
+                });
+                
+                // Hover effect
+                card.addEventListener('mouseover', function(e) {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    if (isBoy) {
+                        createFloatingEmoji(card, '🔵', x, y, '#00f2ff');
+                    } else {
+                        createFloatingEmoji(card, '🌸', x, y, '#ff00e6');
+                    }
+                });
+            });
+            
+            function createFloatingEmoji(parent, emoji, x, y, color) {
+                const emojiElement = document.createElement('div');
+                emojiElement.className = 'confetti-emoji';
+                emojiElement.textContent = emoji;
+                emojiElement.style.left = `${x}px`;
+                emojiElement.style.top = `${y}px`;
+                emojiElement.style.color = color;
+                emojiElement.style.fontSize = `${20 + Math.random() * 20}px`;
+                emojiElement.style.animationDuration = `${1 + Math.random() * 2}s`;
+                
+                parent.appendChild(emojiElement);
+                
+                // Remove after animation completes
+                setTimeout(() => {
+                    emojiElement.remove();
+                }, 2000);
+            }
+
+            // floating emojis in memories section
+            const memorySection = document.querySelector('#memories .memory-content');
+            const emojis = ['📸', '🎞️', '🫶🏻', '🎓', '📜', '✨', '🔵', '🌸', '👾', '💖'];
+            
+            if (memorySection) {
+                // floating emojis
+                for (let i = 0; i < 20; i++) {
+                    const emoji = document.createElement('div');
+                    emoji.className = 'floating-emoji';
+                    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    
+                    // Random position and animation
+                    const left = Math.random() * 100;
+                    const top = Math.random() * 100;
+                    const delay = Math.random() * 20;
+                    const duration = 15 + Math.random() * 15;
+                    const size = 20 + Math.random() * 20;
+                    const color = Math.random() > 0.5 ? '#00f2ff' : '#ff00e6';
+                    
+                    emoji.style.left = `${left}%`;
+                    emoji.style.top = `${top}%`;
+                    emoji.style.animationDelay = `-${delay}s`;
+                    emoji.style.animationDuration = `${duration}s`;
+                    emoji.style.fontSize = `${size}px`;
+                    emoji.style.color = color;
+                    
+                    memorySection.appendChild(emoji);
+                }
+            }
+        });
+
+        // Animate elements
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in:not(.photo-slide)').forEach(el => {
+            observer.observe(el);
+        });
+
+        //graduation header
+        const header = document.querySelector('header');
+        header.addEventListener('click', function() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        });
+
+        // Header hover emoji effect
+        const headerEmojis = ['🔵', '🌸', '👾', '💖'];
+        
+        header.addEventListener('mousemove', function(e) {
+            if (Math.random() > 0.7) {
+                createHeaderEmoji(e.clientX, e.clientY);
+            }
+        });
+        
+        function createHeaderEmoji(x, y) {
+            const emoji = document.createElement('div');
+            emoji.className = 'header-emoji';
+            emoji.textContent = headerEmojis[Math.floor(Math.random() * headerEmojis.length)];
+            emoji.style.left = `${x}px`;
+            emoji.style.top = `${y}px`;
+            
+            // Randomize appearance
+            const size = 20 + Math.random() * 20;
+            const duration = 2 + Math.random() * 2;
+            const colors = ['#00f2ff', '#ff00e6', '#4169e1', '#ff2d75'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            emoji.style.fontSize = `${size}px`;
+            emoji.style.animationDuration = `${duration}s`;
+            emoji.style.color = color;
+            
+            header.appendChild(emoji);
+            
+            // Remove after animation completes
+            setTimeout(() => {
+                emoji.remove();
+            }, duration * 1000);
+        }
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+</body>
+</html>
