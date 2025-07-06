@@ -29,6 +29,23 @@
             --memory-green: #06d6a0;
         }
 
+        /* Gender-specific styles */
+        .male-theme {
+            --primary: #4169e1;
+            --secondary: #1e90ff;
+            --accent: #00bfff;
+            --light: #f0f8ff;
+            --dark: #00008b;
+        }
+
+        .female-theme {
+            --primary: #ff2d75;
+            --secondary: #ff69b4;
+            --accent: #ff1493;
+            --light: #fff0f5;
+            --dark: #8b008b;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -172,97 +189,354 @@
         }
 
         /* style for the logo */
-        .loader-logo {
-            position: absolute;
-            width: 105px;
-            height: 90px;
-            top: 46.7%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 3;
-            animation: pulse 2s infinite alternate;
-        }
-
-        .loader-with-logo {
-            position: relative;
-            width: 180px;
-            height: 180px;
-            margin-bottom: 30px;
-        }
-
-        .loader-logo-center {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-            animation: pulse 2s infinite alternate;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: translate(-50%, -50%) scale(1);
-                filter: drop-shadow(0 0 5px rgba(0, 242, 255, 0.5));
-            }
-            100% {
-                transform: translate(-50%, -50%) scale(1.1);
-                filter: drop-shadow(0 0 15px rgba(255, 0, 230, 0.7));
-            }
-        }
-
-        .circular-loader {
-            position: absolute;
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
+            background: #0a0a0a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        .cyber-loader {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-container {
+            position: relative;
+            z-index: 10;
+            animation: pulse 2s infinite alternate;
+        }
+
+        .loader-logo {
+            width: 120px;
+            height: auto;
+            filter: drop-shadow(0 0 10px rgba(65, 105, 225, 0.7)) 
+                    drop-shadow(0 0 20px rgba(255, 45, 117, 0.7));
+        }
+
+        .cyber-circle {
+            position: absolute;
             border-radius: 50%;
-            background: conic-gradient(transparent 0% 20%, var(--neon-blue) 20% 40%, transparent 40% 60%, var(--neon-pink) 60% 80%, transparent 80% 100%);
-            animation: spin 1.5s linear infinite;
-            filter: blur(8px);
+            border: 3px solid transparent;
+            animation: rotate linear infinite;
+            mix-blend-mode: screen;
+        }
+
+        .cyber-circle:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            border-top-color: #4169e1;
+            border-bottom-color: #4169e1;
+            animation-duration: 3s;
+            animation-delay: 0.2s;
+        }
+
+        .cyber-circle:nth-child(3) {
+            width: 250px;
+            height: 250px;
+            border-left-color: #ff2d75;
+            border-right-color: #ff2d75;
+            animation-duration: 4s;
+            animation-delay: 0.4s;
+        }
+
+        .cyber-circle:nth-child(4) {
+            width: 300px;
+            height: 300px;
+            border-top-color: #00f2ff;
+            border-bottom-color: #ff00e6;
+            animation-duration: 5s;
         }
 
         .loading-text {
             margin-top: 30px;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             letter-spacing: 3px;
-            color: var(--uniform-white);
+            color: #fff;
             text-transform: uppercase;
             position: relative;
+            text-shadow: 0 0 10px rgba(65, 105, 225, 0.7),
+                         0 0 20px rgba(255, 45, 117, 0.7);
+            font-weight: bold;
         }
 
         .loading-text::after {
-            content: '...';
+            content: attr(data-text);
             position: absolute;
-            animation: dots 1.5s steps(5, end) infinite;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: transparent;
+            background: linear-gradient(90deg, #4169e1, #ff2d75, #00f2ff, #ff00e6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            z-index: -1;
+            animation: textGlow 2s linear infinite;
         }
 
-        @keyframes spin {
+        .progress-bar {
+            width: 80%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            margin-top: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #4169e1, #ff2d75);
+            border-radius: 3px;
+            animation: progressLoad 3s ease-in-out forwards;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
 
-        @keyframes dots {
-            0%, 20% { content: '.'; }
-            40% { content: '..'; }
-            60%, 100% { content: '...'; }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
         }
 
-        .section-title {
-            position: relative;
-            display: inline-block;
-            margin: 0 auto 3rem;
+        @keyframes textGlow {
+            0% { filter: blur(0px); opacity: 1; }
+            50% { filter: blur(2px); opacity: 0.8; }
+            100% { filter: blur(0px); opacity: 1; }
         }
 
-        .section-title::after {
-            content: '';
+        @keyframes progressLoad {
+            0% { width: 0%; }
+            20% { width: 20%; }
+            40% { width: 45%; }
+            60% { width: 70%; }
+            80% { width: 85%; }
+            100% { width: 100%; }
+        }
+
+        /* Floating particles background */
+        .floating-particle {
             position: absolute;
-            bottom: -10px;
+            background: linear-gradient(45deg, #4169e1, #ff2d75);
+            border-radius: 50%;
+            filter: blur(1px);
+            animation: floatParticle linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translate(0, 0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translate(var(--tx), var(-ty));
+                opacity: 0;
+            }
+        }
+            
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 99999;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(106, 90, 205, 0.9), rgba(52, 152, 219, 0.9));
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 0 30px rgba(65, 105, 225, 0.7),
+                        0 0 50px rgba(255, 45, 117, 0.7);
+            animation: pulse 2s infinite alternate;
+        }
+
+        .modal-content h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        #lastNameInput {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        #lastNameInput:focus {
+            outline: none;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+            transform: scale(1.02);
+        }
+
+        #enterBtn {
+            background: linear-gradient(45deg, var(--uniform-blue), var(--uniform-pink));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+
+        #enterBtn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(65, 105, 225, 0.5),
+                        0 10px 30px rgba(255, 45, 117, 0.5);
+        }
+
+        /* Custom alert styles */
+        .custom-alert {
+            position: fixed;
+            top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 2px;
+            padding: 1.5rem 2rem;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            z-index: 999999;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            animation: slideDown 0.5s ease forwards, fadeOut 0.5s ease 3.5s forwards;
+            max-width: 90%;
+            text-align: center;
+        }
+        
+        .custom-alert i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .alert-not-classmate {
+            background: white !important;
+            color: black !important;
+            border: 2px solid #333;
+        }
+
+        /* Classmate photo display */
+        .photo-display {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 999999;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .photo-display img {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 10px;
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
+            animation: photoReveal 3s ease-out forwards;
+        }
+
+        @keyframes photoReveal {
+            0% {
+                transform: scale(0.5) rotate(-10deg);
+                opacity: 0;
+                filter: blur(10px);
+            }
+            30% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+                filter: blur(0);
+            }
+            70% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+                filter: blur(0);
+            }
+            100% {
+                transform: scale(0.5) rotate(10deg);
+                opacity: 0;
+                filter: blur(10px);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                top: -100px;
+                opacity: 0;
+            }
+            to {
+                top: 20px;
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 30px rgba(65, 105, 225, 0.7),
+                            0 0 50px rgba(255, 45, 117, 0.7);
+            }
+            100% {
+                transform: scale(1.02);
+                box-shadow: 0 0 40px rgba(65, 105, 225, 0.9),
+                            0 0 60px rgba(255, 45, 117, 0.9);
+            }
         }
 
         /* Header Styles */
@@ -605,6 +879,8 @@
             }
         }
 
+        
+
         /* Classmates Section */
         #classmates {
             background-color: white;
@@ -636,6 +912,7 @@
             margin: 0 auto;
         }
 
+        /* Classmate Cards */
         .classmate-card {
             position: relative;
             border-radius: 10px;
@@ -732,7 +1009,44 @@
             opacity: 0.9;
         }
 
-        /* Memorial section */
+        .teacher-photo-container {
+            position: relative;
+            text-align: center;
+        }
+
+        .teacher-photo-container img {
+            max-width: 80%;
+            max-height: 70vh;
+            border-radius: 10px;
+            border: 3px solid white;
+            box-shadow: 0 0 30px rgba(65, 105, 225, 0.8),
+                        0 0 50px rgba(0, 242, 255, 0.6);
+            animation: teacherPhotoEntrance 1s ease-out;
+        }
+
+        .teacher-title {
+            margin-top: 20px;
+            font-size: 2rem;
+            color: white;
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.8);
+            font-weight: bold;
+            animation: textGlow 2s infinite alternate;
+        }
+
+        @keyframes teacherPhotoEntrance {
+            0% {
+                transform: scale(0.8) translateY(50px);
+                opacity: 0;
+                filter: blur(10px);
+            }
+            100% {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+                filter: blur(0);
+            }
+        }
+
+        /* Memorial Section */
         .memorial-card {
             position: relative;
             background: linear-gradient(135deg, 
@@ -1069,6 +1383,336 @@
             border-radius: 10px;
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
         }
+    
+        /* Comments Section */
+        #comments {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .comments-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .comments-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(135deg, transparent 48%, rgba(65, 105, 225, 0.05) 49%, rgba(65, 105, 225, 0.05) 51%, transparent 52%),
+                linear-gradient(-135deg, transparent 48%, rgba(255, 45, 117, 0.05) 49%, rgba(255, 45, 117, 0.05) 51%, transparent 52%);
+            background-size: 50px 50px;
+            opacity: 0.3;
+            pointer-events: none;
+            animation: gridMove 30s linear infinite;
+        }
+
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .comment-input-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .comment-profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+            align-self: flex-start;
+        }
+
+        .comment-input-container {
+            flex-grow: 1;
+            position: relative;
+        }
+
+        #commentInput {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 25px;
+            border: 2px solid #e0e0e0;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            resize: none;
+            min-height: 100px;
+        }
+
+        #commentInput:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(65, 105, 225, 0.2);
+        }
+
+        .comment-submit-btn {
+            align-self: flex-end;
+            background: linear-gradient(45deg, var(--uniform-blue), var(--uniform-pink));
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .comment-submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(65, 105, 225, 0.3);
+        }
+
+        .comment-submit-btn:active {
+            transform: translateY(1px);
+        }
+
+        .comment-submit-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .comment-submit-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        .comment-submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .comment-submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .comments-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .comment-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .comment-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .comment-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+
+        .comment-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #e0e0e0;
+            flex-shrink: 0;
+        }
+
+        .comment-content {
+            flex-grow: 1;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .comment-author {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .comment-author.male {
+            color: var(--uniform-blue);
+        }
+
+        .comment-author.female {
+            color: var(--uniform-pink);
+        }
+
+        .comment-date {
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        .comment-text {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .no-comments {
+            text-align: center;
+            padding: 2rem;
+            color: #777;
+            font-style: italic;
+        }
+
+        /* Animations */
+        @keyframes commentIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .comment-enter {
+            animation: commentIn 0.5s ease forwards;
+        }
+
+        /* Floating hearts animation */
+        .floating-heart {
+            position: absolute;
+            font-size: 20px;
+            color: var(--uniform-pink);
+            pointer-events: none;
+            animation: float-heart 3s ease-out forwards;
+            z-index: 1;
+        }
+
+        @keyframes float-heart {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Custom scrollbar for comments */
+        .comments-list::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .comments-list::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .comments-list::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--uniform-blue), var(--uniform-pink));
+            border-radius: 10px;
+        }
+
+        .comments-list::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(var(--neon-blue), var(--neon-pink));
+        }
+
+        /* Thank you alert styles */
+        .thank-you-alert {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, rgba(106, 90, 205, 0.95), rgba(52, 152, 219, 0.95));
+            color: white;
+            padding: 2rem 3rem;
+            border-radius: 15px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            z-index: 999999;
+            text-align: center;
+            max-width: 80%;
+            animation: thankYouAnim 1s ease forwards, fadeOut 0.5s ease 3s forwards;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .thank-you-alert h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .thank-you-alert p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .thank-you-alert .heart-emoji {
+            font-size: 3rem;
+            animation: pulse 1s infinite alternate;
+        }
+
+        @keyframes thankYouAnim {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            70% {
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.2);
+            }
+        }
 
         /* Footer */
         footer {
@@ -1191,9 +1835,38 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 1200px) {
+        .classmates-grid {
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 2rem;
+        }
+
+        .teacher-card {
+            grid-template-columns: 1fr;
+        }
+        }
+
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            h2 {
+                font-size: 2.2rem;
+            }
+
+            .album-container {
+                height: 500px;
+            }
+
+            .classmate-card {
+                height: 280px;
+            }
+        }
+
         @media (max-width: 768px) {
             h1 {
-                font-size: 2.5rem;
+                font-size: 2.4rem;
             }
 
             h2 {
@@ -1201,34 +1874,117 @@
             }
 
             section {
-                padding: 3rem 1rem;
-            }
-
-            .nav-container {
-                flex-direction: column;
-                padding: 1rem;
-            }
-
-            .nav-links {
-                margin-top: 1rem;
-                gap: 1rem;
+                padding: 3rem 1.5rem;
             }
 
             .album-container {
-                width: 95%;
                 height: 400px;
-            }
-
-            .teachers-container {
-                grid-template-columns: 1fr;
+                width: 95%;
             }
 
             .classmates-grid {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 1.5rem;
             }
 
-            .memory-content {
+            .classmate-card {
+                height: 240px;
+            }
+
+            .teacher-card {
+                min-width: 100%;
+            }
+
+            .modal-content {
+                width: 90%;
+                padding: 1.5rem;
+            }
+
+            #lastNameInput {
+                padding: 0.8rem;
+            }
+
+            #enterBtn {
+                padding: 0.8rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .album-container {
+                height: 300px;
+            }
+
+            .album-controls {
+                gap: 1rem;
+            }
+
+            .album-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .classmates-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 1rem;
+            }
+
+            .classmate-card {
+                height: 200px;
+            }
+
+            .classmate-name {
+                font-size: 1.2rem;
+            }
+
+            .classmate-quote {
+                font-size: 0.8rem;
+            }
+
+            .modal-content h3 {
                 font-size: 1rem;
+            }
+
+            .custom-alert {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .photo-display img {
+                max-width: 95%;
+                max-height: 70%;
+            }
+        }
+
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .classmates-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+
+            .classmate-card {
+                height: 180px;
+            }
+
+            .classmate-name {
+                font-size: 1rem;
+            }
+
+            .album-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -1237,15 +1993,27 @@
 
     <!-- Preloader -->
     <div class="preloader">
-        <div class="floating-images-container" id="floatingImages"></div>
-    
-    <div class="loader-with-logo">
-        <div class="circular-loader"></div>
-        <img src="MakakalikasanIcon/Logo.png" class="loader-logo-center" alt="Makanature Logo">
+        <div class="cyber-loader">
+            <div class="logo-container">
+                <img src="MakakalikasanIcon/Logo.png" class="loader-logo" alt="Makanature Logo">
+            </div>
+            <div class="cyber-circle"></div>
+            <div class="cyber-circle"></div>
+            <div class="cyber-circle"></div>
+            <div class="loading-text" data-text="INITIALIZING MEMORIES">INITIALIZING MEMORIES</div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
     </div>
-    
-    <div class="loading-text">INITIALIZING MEMORIES</div>
-</div>
+
+    <div id="nameEntryModal" class="modal">
+        <div class="modal-content">
+            <h3>"Kinda miss the loud noise in the classroom we shared within 2 years"</h3>
+            <input type="text" id="lastNameInput" placeholder="Enter your last name...">
+            <button id="enterBtn">ENTER</button>
+        </div>
+    </div>
 
     <nav>
         <div class="nav-container">
@@ -1257,13 +2025,14 @@
         <div class="header-content">
             <h1 class="float-animation">Our Graduation Journey</h1>
             <p>Celebrating the memories, laughter, and bonds we've built together</p>
-            <p class="date">April 15, 2025</p>
+            <p class="date">Graduated <span id="daysSinceGraduation"></span> days ago</p>
         </div>
     </header>
 
     <!-- Album Animation -->
     <section id="intro">
-        <h2 class="section-title">Our Journey in Pictures</h2>
+        <h2 class="section-title" data-text="OUR JOURNEY IN PICTURES">OUR JOURNEY IN PICTURES</h2>
+
         <div class="album-container">
 
             <div class="photo-slide">
@@ -1393,263 +2162,268 @@
                 <img src="Album/WorkImmersionPic.jpeg" alt="School memories">
             </div>
         </div>
+        
         <div class="album-controls">
             <button class="album-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
             <button class="album-btn next-btn"><i class="fas fa-chevron-right"></i></button>
         </div>
+    
+    <div class="cyber-grid-overlay"></div>
     </section>
 
-<!-- ===== Classmates Section ===== -->
-<section id="classmates">
-    <div class="section-title">
-        <h2 data-shadow="OUR AMAZING CLASS">OUR AMAZING CLASS</h2>
-    </div>
-    <div class="classmates-grid">
+    <!-- ===== Classmates Section ===== -->
+    <section id="classmates">
+        <div class="section-title">
+            <h2 data-shadow="OUR AMAZING CLASS">OUR AMAZING CLASS</h2>
+        </div>
+        <div class="classmates-grid">
 
-        <!-- Male classmates -->
-        <div class="classmate-card male">
-            <img class="classmate-img" src="Classmate-Picture/Bilecario.jpg" alt="BELICARIO">
-            <div class="classmate-info">
-                <h4 class="classmate-name">BELICARIO</h4>            
+            <!-- Male classmates -->
+            <div class="classmate-card male">
+                <img class="classmate-img" src="Classmate-Picture/Bilecario.jpg" alt="BELICARIO">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">BELICARIO</h4>            
+                </div>
             </div>
-        </div>
-        <div class="classmate-card male">
-            <img class="classmate-img" src="Classmate-Picture/Cuntapay.jpg" alt="CUNTAPAY">
-            <div class="classmate-info">
-                <h4 class="classmate-name">CUNTAPAY</h4>            
+            <div class="classmate-card male">
+                <img class="classmate-img" src="Classmate-Picture/Cuntapay.jpg" alt="CUNTAPAY">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">CUNTAPAY</h4>            
+                </div>
             </div>
-        </div>
-        <div class="classmate-card male">
-            <img class="classmate-img" src="Classmate-Picture/Deguzman.jpg" alt="DE GUZMAN">
-            <div class="classmate-info">
-                <h4 class="classmate-name">DE GUZMAN</h4>            
+            <div class="classmate-card male">
+                <img class="classmate-img" src="Classmate-Picture/Deguzman.jpg" alt="DE GUZMAN">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">DE GUZMAN</h4>            
+                </div>
             </div>
-        </div>
-        <div class="classmate-card male">
-            <img class="classmate-img" src="Classmate-Picture/Gagatam.jpg" alt="GAGATAM">
-            <div class="classmate-info">
-                <h4 class="classmate-name">GAGATAM</h4>            
+            <div class="classmate-card male">
+                <img class="classmate-img" src="Classmate-Picture/Gagatam.jpg" alt="GAGATAM">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">GAGATAM</h4>            
+                </div>
             </div>
-        </div>
-        <div class="classmate-card male">
-            <img class="classmate-img" src="Classmate-Picture/Lareda.jpg" alt="LAREDA">
-            <div class="classmate-info">
-                <h4 class="classmate-name">LAREDA</h4>            
+            <div class="classmate-card male">
+                <img class="classmate-img" src="Classmate-Picture/Lareda.jpg" alt="LAREDA">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">LAREDA</h4>            
+                </div>
             </div>
-        </div>
-        <div class="classmate-card male">
-            <img class="classmate-img" src="Classmate-Picture/Naga.jpg" alt="NAGA">
-            <div class="classmate-info">
-                <h4 class="classmate-name">NAGA</h4>            
+            <div class="classmate-card male">
+                <img class="classmate-img" src="Classmate-Picture/Naga.jpg" alt="NAGA">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">NAGA</h4>            
+                </div>
             </div>
-        </div>
-        <div class="classmate-card male">
-            <img class="classmate-img" src="Classmate-Picture/Nakila.jpg" alt="NAKILA">
-            <div class="classmate-info">
-                <h4 class="classmate-name">NAKILA</h4>            
+            <div class="classmate-card male">
+                <img class="classmate-img" src="Classmate-Picture/Nakila.jpg" alt="NAKILA">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">NAKILA</h4>            
+                </div>
             </div>
-        </div>
-        <div class="classmate-card male">
-            <img class="classmate-img" src="Classmate-Picture/Picardal.jpg" alt="PICARDAL">
-            <div class="classmate-info">
-                <h4 class="classmate-name">PICARDAL</h4>            
+            <div class="classmate-card male">
+                <img class="classmate-img" src="Classmate-Picture/Picardal.jpg" alt="PICARDAL">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">PICARDAL</h4>            
+                </div>
             </div>
-        </div>
-        <div class="classmate-card male">
-            <img class="classmate-img" src="Classmate-Picture/Salve.jpg" alt="SALVE">
-            <div class="classmate-info">
-                <h4 class="classmate-name">SALVE</h4>            
+            <div class="classmate-card male">
+                <img class="classmate-img" src="Classmate-Picture/Salve.jpg" alt="SALVE">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">SALVE</h4>            
+                </div>
             </div>
-        </div>
-        <div class="classmate-card male">
-            <img class="classmate-img" src="Classmate-Picture/Joshua.jpg" alt="SENARILLOS">
-            <div class="classmate-info">
-                <h4 class="classmate-name">SENARILLOS</h4>            
+            <div class="classmate-card male">
+                <img class="classmate-img" src="Classmate-Picture/Joshua.jpg" alt="SENARILLOS">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">SENARILLOS</h4>            
+                </div>
             </div>
-        </div>
-        <div class="classmate-card male">
-            <img class="classmate-img" src="Classmate-Picture/Sivilla.jpg" alt="SEVILLA">
-            <div class="classmate-info">
-                <h4 class="classmate-name">SEVILLA</h4>
+            <div class="classmate-card male">
+                <img class="classmate-img" src="Classmate-Picture/Sivilla.jpg" alt="SEVILLA">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">SEVILLA</h4>
+                </div>
             </div>
-        </div>
-        <div class="classmate-card male">
-            <img class="classmate-img" src="Classmate-Picture/Jv.jpg" alt="SIERVO">
-            <div class="classmate-info">
-                <h4 class="classmate-name">SIERVO</h4>            
+            <div class="classmate-card male">
+                <img class="classmate-img" src="Classmate-Picture/Jv.jpg" alt="SIERVO">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">SIERVO</h4>            
+                </div>
             </div>
-        </div>
-        <div class="classmate-card male">
-            <img class="classmate-img" src="Classmate-Picture/Tagabi.jpg" alt="TAGABI">
-            <div class="classmate-info">
-                <h4 class="classmate-name">TAGABI</h4>            
+            <div class="classmate-card male">
+                <img class="classmate-img" src="Classmate-Picture/Tagabi.jpg" alt="TAGABI">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">TAGABI</h4>            
+                </div>
             </div>
-        </div>
-        <div class="classmate-card male">
-            <img class="classmate-img" src="Classmate-Picture/Tamayosa.jpg" alt="TAMAYOSA">
-            <div class="classmate-info">
-                <h4 class="classmate-name">TAMAYOSA</h4>            
+            <div class="classmate-card male">
+                <img class="classmate-img" src="Classmate-Picture/Tamayosa.jpg" alt="TAMAYOSA">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">TAMAYOSA</h4>            
+                </div>
             </div>
-        </div>
-        <div class="classmate-card male">
-            <img class="classmate-img" src="Classmate-Picture/Villarin.jpg" alt="VILLARIN">
-            <div class="classmate-info">
-                <h4 class="classmate-name">VILLARIN</h4>            
+            <div class="classmate-card male">
+                <img class="classmate-img" src="Classmate-Picture/Villarin.jpg" alt="VILLARIN">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">VILLARIN</h4>            
+                </div>
             </div>
-        </div>
 
-        <!-- Girls -->
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/Jewell.jpg" alt="ARRIESGADO">
-            <div class="classmate-info">
-                <h4 class="classmate-name">AKMAD</h4>            
+            <!-- Girls -->
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/Jewell.jpg" alt="ARRIESGADO">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">AKMAD</h4>            
+                </div>
             </div>
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/Trisha.jpg" alt="ARRIESGADO">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">ARRIESGADO</h4>            
+                </div>
+            </div>
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/Baluyot.jpg" alt="BALUYOT">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">BALUYOT</h4>            
+                </div>
+            </div>
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/Caranto.jpg" alt="CARANTO">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">CARANTO</h4>            
+                </div>
+            </div>
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/Dapat.jpg" alt="DAPAT">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">DAPAT</h4>            
+                </div>
+            </div>
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/De Asa.jpg" alt="DE ASA">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">DE ASA</h4>            
+                </div>
+            </div>
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/Shiela.jpg" alt="DEL ROSARIO">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">DEL ROSARIO</h4>            
+                </div>
+            </div>
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/Francisco.jpg" alt="FRANCISCO">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">FRANCISCO</h4>            
+                </div>
+            </div>
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/Gariando.jpg" alt="GARIANDO">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">GARIANDO</h4>            
+                </div>
+            </div>
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/Hermo.jpg" alt="HERMO">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">HERMO</h4>            
+                </div>
+            </div>
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/Junio.jpg" alt="JUNIO">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">JUNIO</h4>            
+                </div>
+            </div>
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/Stephanie.jpg" alt="LAMBANA">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">LAMBANA</h4>            
+                </div>
+            </div>
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/Lasquite.jpg" alt="LASQUITE">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">LASQUITE</h4>            
+                </div>
+            </div>
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/Mallari.jpg" alt="MALLARI">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">MALLARI</h4>            
+                </div>
+            </div>
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/Cathie.jpg" alt="MARCIANO">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">MARCIANO</h4>            
+                </div>
+            </div>
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/Mimbala.jpg" alt="MIMBALA">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">MIMBALA</h4>            
+                </div>
+            </div>
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/Janin.jpg" alt="NAVARRO">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">NAVARRO</h4>            
+                </div>
+            </div>
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/Ocampo.jpg" alt="OCAMPO">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">OCAMPO</h4>            
+                </div>
+            </div>
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/Omandam.jpg" alt="OMANDAM">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">OMANDAM</h4>            
+                </div>
+            </div>
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/Charm.jpg" alt="PARICA">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">PARICA</h4>            
+                </div>
+            </div>
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/Perol.jpg" alt="PEROL">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">PEROL</h4>            
+                </div>
+            </div>
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/Salem.jpg" alt="SALEM">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">SALEM</h4>            
+                </div>
+            </div>
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/Sekak.jpg" alt="SEKAK">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">SEKAK</h4>            
+                </div>
+            </div>
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/Ursal.jpg" alt="URSAL">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">URSAL</h4>            
+                </div>
+            </div>
+            <div class="classmate-card female">
+                <img class="classmate-img" src="Classmate-Picture/Zaraga.jpg" alt="ZARAGA">
+                <div class="classmate-info">
+                    <h4 class="classmate-name">ZARAGA</h4>            
+                </div>
         </div>
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/Trisha.jpg" alt="ARRIESGADO">
-            <div class="classmate-info">
-                <h4 class="classmate-name">ARRIESGADO</h4>            
-            </div>
-        </div>
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/Baluyot.jpg" alt="BALUYOT">
-            <div class="classmate-info">
-                <h4 class="classmate-name">BALUYOT</h4>            
-            </div>
-        </div>
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/Caranto.jpg" alt="CARANTO">
-            <div class="classmate-info">
-                <h4 class="classmate-name">CARANTO</h4>            
-            </div>
-        </div>
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/Dapat.jpg" alt="DAPAT">
-            <div class="classmate-info">
-                <h4 class="classmate-name">DAPAT</h4>            
-            </div>
-        </div>
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/De Asa.jpg" alt="DE ASA">
-            <div class="classmate-info">
-                <h4 class="classmate-name">DE ASA</h4>            
-            </div>
-        </div>
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/Shiela.jpg" alt="DEL ROSARIO">
-            <div class="classmate-info">
-                <h4 class="classmate-name">DEL ROSARIO</h4>            
-            </div>
-        </div>
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/Francisco.jpg" alt="FRANCISCO">
-            <div class="classmate-info">
-                <h4 class="classmate-name">FRANCISCO</h4>            
-            </div>
-        </div>
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/Gariando.jpg" alt="GARIANDO">
-            <div class="classmate-info">
-                <h4 class="classmate-name">GARIANDO</h4>            
-            </div>
-        </div>
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/Hermo.jpg" alt="HERMO">
-            <div class="classmate-info">
-                <h4 class="classmate-name">HERMO</h4>            
-            </div>
-        </div>
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/Junio.jpg" alt="JUNIO">
-            <div class="classmate-info">
-                <h4 class="classmate-name">JUNIO</h4>            
-            </div>
-        </div>
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/Stephanie.jpg" alt="LAMBANA">
-            <div class="classmate-info">
-                <h4 class="classmate-name">LAMBANA</h4>            
-            </div>
-        </div>
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/Lasquite.jpg" alt="LASQUITE">
-            <div class="classmate-info">
-                <h4 class="classmate-name">LASQUITE</h4>            
-            </div>
-        </div>
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/Mallari.jpg" alt="MALLARI">
-            <div class="classmate-info">
-                <h4 class="classmate-name">MALLARI</h4>            
-            </div>
-        </div>
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/Cathie.jpg" alt="MARCIANO">
-            <div class="classmate-info">
-                <h4 class="classmate-name">MARCIANO</h4>            
-            </div>
-        </div>
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/Mimbala.jpg" alt="MIMBALA">
-            <div class="classmate-info">
-                <h4 class="classmate-name">MIMBALA</h4>            
-            </div>
-        </div>
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/Janin.jpg" alt="NAVARRO">
-            <div class="classmate-info">
-                <h4 class="classmate-name">NAVARRO</h4>            
-            </div>
-        </div>
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/Ocampo.jpg" alt="OCAMPO">
-            <div class="classmate-info">
-                <h4 class="classmate-name">OCAMPO</h4>            
-            </div>
-        </div>
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/Omandam.jpg" alt="OMANDAM">
-            <div class="classmate-info">
-                <h4 class="classmate-name">OMANDAM</h4>            
-            </div>
-        </div>
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/Charm.jpg" alt="PARICA">
-            <div class="classmate-info">
-                <h4 class="classmate-name">PARICA</h4>            
-            </div>
-        </div>
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/Perol.jpg" alt="PEROL">
-            <div class="classmate-info">
-                <h4 class="classmate-name">PEROL</h4>            
-            </div>
-        </div>
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/Salem.jpg" alt="SALEM">
-            <div class="classmate-info">
-                <h4 class="classmate-name">SALEM</h4>            
-            </div>
-        </div>
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/Sekak.jpg" alt="SEKAK">
-            <div class="classmate-info">
-                <h4 class="classmate-name">SEKAK</h4>            
-            </div>
-        </div>
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/Ursal.jpg" alt="URSAL">
-            <div class="classmate-info">
-                <h4 class="classmate-name">URSAL</h4>            
-            </div>
-        </div>
-        <div class="classmate-card female">
-            <img class="classmate-img" src="Classmate-Picture/Zaraga.jpg" alt="ZARAGA">
-            <div class="classmate-info">
-                <h4 class="classmate-name">ZARAGA</h4>            
-            </div>
-    </div>
-</section>
+    </section>
+
+    <div id="classmatePhotoDisplay" class="photo-display"></div>
 
     <!-- Teachers Section -->
     <section id="teachers">
@@ -1826,169 +2600,190 @@
     <section id="memories">
         <h2 class="section-title">A Journey to Remember</h2>
         <div class="memory-content">
-            <h1>ERROR 404 Message Not Found.</h1>
+           <h1>This Message is on work please wait...</h1>
         </div>        
     </section>
 
     <!-- ===== Gallery Section ===== -->
-<section id="gallery">
-    <h2 class="section-title">Gallery of Memories</h2>
-    <div class="gallery-container">
-        <div class="gallery-grid">
+    <section id="gallery">
+        <h2 class="section-title">Gallery of Memories</h2>
+        <div class="gallery-container">
+            <div class="gallery-grid">
 
-            <!-- Grade 11 Memories -->
+                <!-- Grade 11 Memories -->
 
-            <div class="gallery-item">
-                <img src="Album/Movie-Class.jpg" alt="Watching Elemental">
-                <div class="gallery-caption">Movie Day</div>
+                <div class="gallery-item">
+                    <img src="Album/Movie-Class.jpg" alt="Watching Elemental">
+                    <div class="gallery-caption">Movie Day</div>
+                </div>
+
+                <div class="gallery-item">
+                    <video muted loop autoplay>
+                        <source src="Video1.1/Orentation.mp4" type="video/mp4">
+                    </video>
+                    <div class="gallery-caption"></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="Album/Gallery/FirstExam.jpg" alt="Grade 11 Exam">
+                    <div class="gallery-caption">Grade 11 Exam</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="Album/Grade11Pic.jpg" alt="Grade 11 Class">
+                    <div class="gallery-caption">Grade 11 Picture</div>
+                </div>
+
+                <div class="gallery-item">
+                    <video muted loop autoplay>
+                        <source src="Video1.2/Grade11.mp4" type="video/mp4">
+                    </video>
+                    <div class="gallery-caption">Grade 11 Memories</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="Album/TeachersDay.jpg" alt="Surprising Sir Flor">
+                    <div class="gallery-caption">Teachers' Day Preparation</div>
+                </div>
+
+                <div class="gallery-item">
+                    <video muted loop autoplay>
+                        <source src="Video/TeachersDayPreparation.mp4" type="video/mp4">
+                    </video>
+                    <div class="gallery-caption">Teachers Day Memories</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="Album/TeachrsDay-001.jpg" alt="Teachers Day">
+                    <div class="gallery-caption">Teachers Day Suprise</div>
+                </div>
+
+                <div class="gallery-item">
+                    <video muted loop autoplay>
+                        <source src="Video/TeachersDay.mp4" type="video/mp4">
+                    </video>
+                    <div class="gallery-caption">11 Makanature</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="Album/Gallery/Friday.jpeg">
+                    <div class="gallery-caption">Catch up Friday</div>
+                </div>
+
+                <div class="gallery-item">
+                    <video muted loop autoplay>
+                        <source src="Video1.0/11 Makakalikasan.mp4" type="video/mp4">
+                    </video>
+                    <div class="gallery-caption">Makakalikasan Class</div>
+                </div>
+
+                <div class="gallery-item">
+                    <video muted loop autoplay>
+                        <source src="Video1.1/Cantata.mp4" type="video/mp4">
+                    </video>
+                    <div class="gallery-caption">Cantata</div>
+                </div>
+
+                <div class="gallery-item">
+                    <video muted loop autoplay>
+                        <source src="Video/Year End Party.mp4" type="video/mp4">
+                    </video>
+                    <div class="gallery-caption">Year End Party</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="Album/Year-End-Party.jpeg" alt="Year End Party">
+                    <div class="gallery-caption">Best Smile Awards</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="Album/Practice001.jpeg" alt="Dance Practice">
+                    <div class="gallery-caption">Under the Bridge Rehearsals</div>
+                </div>
+
+                <div class="gallery-item">
+                    <video muted loop autoplay>
+                        <source src="Video1.0/Classmates.mp4" type="video/mp4">
+                    </video>
+                    <div class="gallery-caption">Grade 11</div>
+                </div>
+
+                <!-- Grade 12 Memories -->
+
+                <div class="gallery-item">
+                    <img src="Album/Dance001.jpeg">
+                    <div class="gallery-caption"></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="Album/Intercultural-Dance.jpg" alt="Dance Competition Win">
+                    <div class="gallery-caption">Intercultural Dance</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="Album/ClasspicBestTeacher.jpeg">
+                    <div class="gallery-caption">UCPS ClassPicture</div>
+                </div>
+
+
+                <div class="gallery-item">
+                    <img src="Album/WorkImmersionPic-001.png">
+                    <div class="gallery-caption">WorkImmersion</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="Album/WorkImmersionPic.png">
+                    <div class="gallery-caption">WorkImmersion</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="Album/Gallery/ClassPicture.jpg">
+                    <div class="gallery-caption">Class Picture</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="Album/GraduationPic.jpg">
+                    <div class="gallery-caption">Graduation Pictures</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="Album/GraduationClassPic.jpg">
+                    <div class="gallery-caption">Graduation Class Picture</div>
+                </div>
+
+                <div class="gallery-item">
+                    <video muted loop autoplay>
+                        <source src="Video1.2/Makanature Graduation.mp4" type="video/mp4">
+                    </video>
+                    <div class="gallery-caption">Graduation Makanature</div>
+                </div>
             </div>
-
-            <div class="gallery-item">
-                <video muted loop autoplay>
-                    <source src="Video1.1/Orentation.mp4" type="video/mp4">
-                </video>
-                <div class="gallery-caption"></div>
-            </div>
-
-            <div class="gallery-item">
-                <img src="Album/Gallery/FirstExam.jpg" alt="Grade 11 Exam">
-                <div class="gallery-caption">Grade 11 Exam</div>
-            </div>
-
-            <div class="gallery-item">
-                <img src="Album/Grade11Pic.jpg" alt="Grade 11 Class">
-                <div class="gallery-caption">Grade 11 Picture</div>
-            </div>
-
-            <div class="gallery-item">
-                <video muted loop autoplay>
-                    <source src="Video1.2/Grade11.mp4" type="video/mp4">
-                </video>
-                <div class="gallery-caption">Grade 11 Memories</div>
-            </div>
-
-            <div class="gallery-item">
-                <img src="Album/TeachersDay.jpg" alt="Surprising Sir Flor">
-                <div class="gallery-caption">Teachers' Day Preparation</div>
-            </div>
-
-            <div class="gallery-item">
-                <video muted loop autoplay>
-                    <source src="Video/TeachersDayPreparation.mp4" type="video/mp4">
-                </video>
-                <div class="gallery-caption">Teachers Day Memories</div>
-            </div>
-
-            <div class="gallery-item">
-                <img src="Album/TeachrsDay-001.jpg" alt="Teachers Day">
-                <div class="gallery-caption">Teachers Day Suprise</div>
-            </div>
-
-            <div class="gallery-item">
-                <video muted loop autoplay>
-                    <source src="Video/TeachersDay.mp4" type="video/mp4">
-                </video>
-                <div class="gallery-caption">11 Makanature</div>
-            </div>
-
-            <div class="gallery-item">
-                <img src="Album/Gallery/Friday.jpeg">
-                <div class="gallery-caption">Catch up Friday</div>
-            </div>
-
-            <div class="gallery-item">
-                <video muted loop autoplay>
-                    <source src="Video1.0/11 Makakalikasan.mp4" type="video/mp4">
-                </video>
-                <div class="gallery-caption">Makakalikasan Class</div>
-            </div>
-
-            <div class="gallery-item">
-                <video muted loop autoplay>
-                    <source src="Video1.1/Cantata.mp4" type="video/mp4">
-                </video>
-                <div class="gallery-caption">Cantata</div>
-            </div>
-
-            <div class="gallery-item">
-                <video muted loop autoplay>
-                    <source src="Video/Year End Party.mp4" type="video/mp4">
-                </video>
-                <div class="gallery-caption">Year End Party</div>
-            </div>
-
-            <div class="gallery-item">
-                <img src="Album/Year-End-Party.jpeg" alt="Year End Party">
-                <div class="gallery-caption">Best Smile Awards</div>
-            </div>
-
-            <div class="gallery-item">
-                <img src="Album/Practice001.jpeg" alt="Dance Practice">
-                <div class="gallery-caption">Under the Bridge Rehearsals</div>
-            </div>
-
-            <div class="gallery-item">
-                <video muted loop autoplay>
-                    <source src="Video1.0/Classmates.mp4" type="video/mp4">
-                </video>
-                <div class="gallery-caption">Grade 11</div>
-            </div>
-
-            <!-- Grade 12 Memories -->
-
-            <div class="gallery-item">
-                <img src="Album/Dance001.jpeg">
-                <div class="gallery-caption"></div>
-            </div>
-            
-            <div class="gallery-item">
-                <img src="Album/Intercultural-Dance.jpg" alt="Dance Competition Win">
-                <div class="gallery-caption">Intercultural Dance</div>
-            </div>
-
-            <div class="gallery-item">
-                <img src="Album/ClasspicBestTeacher.jpeg">
-                <div class="gallery-caption">UCPS ClassPicture</div>
-            </div>
-
-
-            <div class="gallery-item">
-                <img src="Album/WorkImmersionPic-001.png">
-                <div class="gallery-caption">WorkImmersion</div>
-            </div>
-
-            <div class="gallery-item">
-                <img src="Album/WorkImmersionPic.png">
-                <div class="gallery-caption">WorkImmersion</div>
-            </div>
-
-            <div class="gallery-item">
-                <img src="Album/Gallery/ClassPicture.jpg">
-                <div class="gallery-caption">Class Picture</div>
-            </div>
-
-            <div class="gallery-item">
-                <img src="Album/GraduationPic.jpg">
-                <div class="gallery-caption">Graduation Pictures</div>
-            </div>
-
-            <div class="gallery-item">
-                <img src="Album/GraduationClassPic.jpg">
-                <div class="gallery-caption">Graduation Class Picture</div>
-            </div>
-
-            <div class="gallery-item">
-                <video muted loop autoplay>
-                    <source src="Video1.2/Makanature Graduation.mp4" type="video/mp4">
-                </video>
-                <div class="gallery-caption">Graduation Makanature</div>
-            </div>
-            
-            
+        
         </div>
-    
-    </div>
-</section>
+    </section>
+
+    <!-- Comment -->
+     <section id="comments">
+        <h2 class="section-title">Leave Your Message</h2>
+        <div class="comments-container">
+            <form class="comment-form" id="commentForm">
+                <div class="comment-input-group">
+                    <img src="MakakalikasanIcon/Logo.png" class="comment-profile-pic" id="currentUserPic" alt="Profile">
+                    <div class="comment-input-container">
+                        <textarea id="commentInput" placeholder="Share your thoughts about our Makanature journey..."></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="comment-submit-btn">
+                    Post Message <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+
+            <div class="comments-list" id="commentsList">
+                <!-- Comments will be loaded here -->
+                <div class="no-comments">No messages yet. Be the first to share your thoughts!</div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -1996,13 +2791,62 @@
             <h2>Makanature 2023-2025</h2>
             <p>Forever in our hearts</p>
             <div class="footer-links">
-                <a href="https://github.com/Edmar2003/MAKANATURE" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://github.com/Edmar2003" target="_blank"><i class="fab fa-github"></i></a>
             </div>
             <p class="copyright">2025 Graduation Memories.</p>
         </div>
     </footer>
 
     <script>
+
+        // Calculate days since graduation
+        const graduationDate = new Date('April 15, 2025');
+        const today = new Date();
+        const timeDiff = today.getTime() - graduationDate.getTime();
+        const daysSinceGraduation = Math.floor(timeDiff / (1000 * 3600 * 24));
+
+        // Update the element
+        document.getElementById('daysSinceGraduation').textContent = daysSinceGraduation;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const preloader = document.querySelector('.preloader');
+
+            // Create floating particles
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'floating-particle';
+
+                // Random properties
+                const size = Math.random() * 8 + 2;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const duration = 10 + Math.random() * 20;
+                const delay = Math.random() * 5;
+                const tx = (Math.random() - 0.5) * 200;
+                const ty = (Math.random() - 0.5) * 200;
+
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.setProperty('--tx', `${tx}px`);
+                particle.style.setProperty('--ty', `${ty}px`);
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${delay}s`;
+
+                preloader.appendChild(particle);
+            }
+
+            // Remove preloader when loaded
+            window.addEventListener('load', function() {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 500);
+                }, 1000);
+            });
+        });
 
         // Enhanced Cyberpunk Preloader
         window.addEventListener('load', function() {
@@ -2042,6 +2886,7 @@
                 'Album/Gallery/FirstExam.jpg',
                 'Album/Gallery/Friday.jpeg',
                 'Album/Gallery/Grade11Picture.jpg',
+                'Album/Gallery/PhotoWithHer.jpg',
                 'Album/BasecoPic.jpg',
                 'Album/Year-End-Party.jpeg',
                 'Album/WorkImmersionPic.png',
@@ -2084,7 +2929,6 @@
                 img.style.animationDelay = `${delay}s`;
                 img.style.animationDuration = `${duration}s`;
 
-                container.appendChild(img);
             }
         });
 
@@ -2317,7 +3161,7 @@
                 card.addEventListener('click', function(e) {
                     e.stopPropagation();
 
-                    // Create memorial overlay
+                    // Memorial overlay
                     const memorial = document.createElement('div');
                     memorial.className = 'memorial-content';
                     memorial.innerHTML = `
@@ -2332,11 +3176,11 @@
                         </p>
                     `;
                     
-                    // Clear existing content and add memorial
+                    // Memorial
                     this.innerHTML = '';
                     this.appendChild(memorial);
                     
-                    // Create falling petals
+                    // Falling petals
                     const petalsContainer = this.querySelector('#gagatamPetals');
                     for (let i = 0; i < 15; i++) {
                         const petal = document.createElement('div');
@@ -2478,7 +3322,7 @@
             observer.observe(el);
         });
 
-        //graduation header
+        // Graduation header
         const header = document.querySelector('header');
         header.addEventListener('click', function() {
             confetti({
@@ -2521,6 +3365,531 @@
                 emoji.remove();
             }, duration * 1000);
         }
+
+        // After the preloader code
+        setTimeout(() => {
+            document.getElementById('nameEntryModal').style.display = 'flex';
+        }, 800);
+
+        // Classmates data with quotes styles and photo paths
+        const classmates = {
+            // Boys
+            "BELICARIO": { gender: "male", quote: "Who is you?", 
+                          style: "male-theme", photo: "Classmate-Picture/Bilecario.jpg" },
+            "CUNTAPAY": { gender: "male", quote: "Why so serius?", 
+                         style: "male-theme", photo: "Classmate-Picture/Cuntapay.jpg" },
+            "DE GUZMAN": { gender: "male", quote: "Always Xy", 
+                          style: "male-theme", photo: "Classmate-Picture/Deguzman.jpg" },
+            "GAGATAM": { gender: "male", quote: "Forever in our memories", 
+                        style: "male-theme", photo: "Classmate-Picture/Gagatam.jpg" },
+            "LAREDA": { gender: "male", quote: "I like this guy", 
+                       style: "male-theme", photo: "Classmate-Picture/Lareda.jpg" },
+            "NAGA": { gender: "male", quote: "Why your voice is low?", 
+                     style: "male-theme", photo: "Classmate-Picture/Naga.jpg" },
+            "NAKILA": { gender: "male", quote: ". . .", 
+                       style: "male-theme", photo: "Classmate-Picture/Nakila.jpg" },
+            "PICARDAL": { gender: "male", quote: "????", 
+                         style: "male-theme", photo: "Classmate-Picture/Picardal.jpg" },
+            "SALVE": { gender: "male", quote: "He Good", 
+                      style: "male-theme", photo: "Classmate-Picture/Salve.jpg" },
+            "SENARILLOS": { gender: "male", quote: "The advicer in love", 
+                           style: "male-theme", photo: "Classmate-Picture/Joshua.jpg" },
+            "SEVILLA": { gender: "male", quote: "The calm presence", 
+                        style: "male-theme", photo: "Classmate-Picture/Sivilla.jpg" },
+            "SIERVO": { gender: "male", quote: "Always in the space since grade 11", 
+                       style: "male-theme", photo: "Classmate-Picture/Jv.jpg" },
+            "TAGABI": { gender: "male", quote: "Our older sis/bro", 
+                       style: "male-theme", photo: "Classmate-Picture/Tagabi.jpg" },
+            "TAMAYOSA": { gender: "male", quote: "Who is I?", 
+                         style: "male-theme", photo: "Classmate-Picture/Tamayosa.jpg" },
+            "VILLARIN": { gender: "male", quote: "Bro is who?", 
+                         style: "male-theme", photo: "Classmate-Picture/Villarin.jpg" },
+            "FLOR": {gender: "male", quote: "The guiding light of Makanature Class", 
+                     style: "teacher-theme", photo: "Classmate-Picture/Adviser/flor.jpg" },
+
+            // Girls
+            "AKMAD": { gender: "female", quote: "The radiant smile", 
+                      style: "female-theme", photo: "Classmate-Picture/Jewell.jpg" },
+            "ARRIESGADO": { gender: "female", quote: "The fashion icon", 
+                           style: "female-theme", photo: "Classmate-Picture/Trisha.jpg" },
+            "BALUYOT": { gender: "female", quote: "The organized one", 
+                        style: "female-theme", photo: "Classmate-Picture/Baluyot.jpg" },
+            "CARANTO": { gender: "female", quote: "The thoughtful friend", 
+                        style: "female-theme", photo: "Classmate-Picture/Caranto.jpg" },
+            "DAPAT": { gender: "female", quote: "The cheerful spirit", 
+                      style: "female-theme", photo: "Classmate-Picture/Dapat.jpg" },
+            "DE ASA": { gender: "female", quote: "The artistic soul", 
+                       style: "female-theme", photo: "Classmate-Picture/De Asa.jpg" },
+            "DEL ROSARIO": { gender: "female", quote: "The kind heart", 
+                            style: "female-theme", photo: "Classmate-Picture/Shiela.jpg" },
+            "FRANCISCO": { gender: "female", quote: "The determined go-getter", 
+                          style: "female-theme", photo: "Classmate-Picture/Francisco.jpg" },
+            "GARIANDO": { gender: "female", quote: "The wise one", 
+                         style: "female-theme", photo: "Classmate-Picture/Gariando.jpg" },
+            "HERMO": { gender: "female", quote: "The creative thinker", 
+                      style: "female-theme", photo: "Classmate-Picture/Hermo.jpg" },
+            "JUNIO": { gender: "female", quote: "The reliable friend", 
+                      style: "female-theme", photo: "Classmate-Picture/Junio.jpg" },
+            "LAMBANA": { gender: "female", quote: "The one with bright ideas", 
+                        style: "female-theme", photo: "Classmate-Picture/Stephanie.jpg" },
+            "LASQUITE": { gender: "female", quote: "The problem solver", 
+                         style: "female-theme", photo: "Classmate-Picture/Lasquite.jpg" },
+            "MALLARI": { gender: "female", quote: "The organized planner", 
+                        style: "female-theme", photo: "Classmate-Picture/Mallari.jpg" },
+            "MARCIANO": { gender: "female", quote: "The girl who has a big DREAM", 
+                         style: "female-theme", photo: "Classmate-Picture/Cathie.jpg" },
+            "MIMBALA": { gender: "female", quote: "The thoughtful one", 
+                        style: "female-theme", photo: "Classmate-Picture/Mimbala.jpg" },
+            "NAVARRO": { gender: "female", quote: "The creative mind", 
+                        style: "female-theme", photo: "Classmate-Picture/Janin.jpg" },
+            "OCAMPO": { gender: "female", quote: "The determined achiever", 
+                       style: "female-theme", photo: "Classmate-Picture/Ocampo.jpg" },
+            "OMANDAM": { gender: "female", quote: "The reliable friend", 
+                        style: "female-theme", photo: "Classmate-Picture/Omandam.jpg" },
+            "PARICA": { gender: "female", quote: "The one with bright ideas", 
+                       style: "female-theme", photo: "Classmate-Picture/Charm.jpg" },
+            "PEROL": { gender: "female", quote: "The problem solver", 
+                      style: "female-theme", photo: "Classmate-Picture/Perol.jpg" },
+            "SALEM": { gender: "female", quote: "The organized planner", 
+                      style: "female-theme", photo: "Classmate-Picture/Salem.jpg" },
+            "SEKAK": { gender: "female", quote: "The cheerful presence", 
+                      style: "female-theme", photo: "Classmate-Picture/Sekak.jpg" },
+            "URSAL": { gender: "female", quote: "The thoughtful one", 
+                      style: "female-theme", photo: "Classmate-Picture/Ursal.jpg" },
+            "ZARAGA": { gender: "female", quote: "The creative mind", 
+                       style: "female-theme", photo: "Classmate-Picture/Zaraga.jpg" }
+        };
+
+        const specialTeacher = {
+            "FLOR": {
+                fullName: "Joseph Agustin Flor",
+                role: "Our Beloved Adviser Teacher",
+                quote: "The guiding light of Makanature Class",
+                photo: "Classmate-Picture/Adviser/flor.jpg",
+                specialStyle: `
+                    body {
+                        --primary: #4169e1;
+                        --secondary: #4b6cb7;
+                        --accent: #00f2ff;
+                        --light: #f8f9fa;
+                        --dark: #182848;
+                        background: linear-gradient(135deg, #182848, #4b6cb7);
+                    }
+                    header {
+                        background: linear-gradient(135deg, rgba(27, 54, 93, 0.9), rgba(75, 108, 183, 0.9)) !important;
+                    }
+                    nav.scrolled {
+                        background: rgba(27, 54, 93, 0.95) !important;
+                    }
+                `,
+                animation: "teacherSpecialEntrance"
+            }
+        };
+
+        // Modify the name entry handler to include teacher check
+        document.getElementById('enterBtn').addEventListener('click', function() {
+            const lastNameInput = document.getElementById('lastNameInput').value.trim().toUpperCase();
+            const modal = document.getElementById('nameEntryModal');
+
+            if (lastNameInput === '') {
+                showAlert('Please enter your last name', 'white', '⚠️');
+                return;
+            }
+
+            // Check if name is in classmates
+            if (classmates[lastNameInput]) {
+                const classmate = classmates[lastNameInput];
+                const color = classmate.gender === 'male' ? '#4169e1' : '#ff2d75';
+                const emoji = classmate.gender === 'male' ? '👨‍🎓' : '👩‍🎓';
+
+                // Apply gender theme
+                document.body.classList.remove('male-theme', 'female-theme');
+                document.body.classList.add(classmate.style);
+
+                // Show welcome message
+                showAlert(`Welcome ${lastNameInput}, ${classmate.quote}`, color, emoji);
+
+                // Show classmate photo
+                showClassmatePhoto(classmate.photo);
+
+                // Close modal
+                setTimeout(() => {
+                    modal.style.display = 'none';
+
+                    // Launch confetti
+                    confetti({
+                        particleCount: 150,
+                        spread: 70,
+                        origin: { y: 0.6 },
+                        colors: [color],
+                        shapes: ['circle', 'star']
+                    });
+                }, 1000);
+            } 
+            // Check if name is the special teacher
+            else if (specialTeacher[lastNameInput]) {
+                const teacher = specialTeacher[lastNameInput];
+
+                // Apply special style
+                const styleTag = document.createElement('style');
+                styleTag.innerHTML = teacher.specialStyle;
+                document.head.appendChild(styleTag);
+
+                // Show special welcome message
+                showAlert(`Welcome Sir ${lastNameInput}, ${teacher.quote}`, '#4169e1', '👨‍🏫');
+
+                // Show teacher photo with special animation
+                showSpecialTeacherPhoto(teacher.photo);
+
+                // Close modal
+                setTimeout(() => {
+                    modal.style.display = 'none';
+
+                    // Special confetti for teacher
+                    confetti({
+                        particleCount: 300,
+                        spread: 100,
+                        origin: { y: 0.6 },
+                        colors: ['#4169e1', '#4b6cb7', '#00f2ff', '#ffffff'],
+                        shapes: ['circle', 'star'],
+                        scalar: 1.5
+                    });
+
+                    // Additional floating emojis
+                    createFloatingEmojis(['👨‍🏫', '📚', '✨', '💙'], 30);
+                }, 1000);
+            }
+            else {
+                // Not a classmate or teacher
+                showAlert("You're not from Makanature class but you can come in", 'white', '👋', true);
+
+                // Close modal
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 1000);
+            }
+        });
+
+        // New functions
+        function showSpecialTeacherPhoto(photoPath) {
+            const photoDisplay = document.getElementById('classmatePhotoDisplay');
+            photoDisplay.innerHTML = `
+                <div class="teacher-photo-container">
+                    <img src="${photoPath}" alt="Teacher photo">
+                    <div class="teacher-title">Our Beloved Adviser Teacher</div>
+                </div>
+            `;
+            photoDisplay.style.display = 'flex';
+            
+            // Hide after 5 seconds (longer than regular classmates)
+            setTimeout(() => {
+                photoDisplay.style.display = 'none';
+            }, 5000);
+        }
+
+        function createFloatingEmojis(emojis, count) {
+            for (let i = 0; i < count; i++) {
+                const emoji = document.createElement('div');
+                emoji.className = 'floating-emoji';
+                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+                // Position randomly on screen
+                emoji.style.left = `${Math.random() * 100}%`;
+                emoji.style.top = `${Math.random() * 100}%`;
+                emoji.style.fontSize = `${20 + Math.random() * 30}px`;
+                emoji.style.animationDuration = `${3 + Math.random() * 5}s`;
+                emoji.style.color = `hsl(${Math.random() * 60 + 200}, 100%, 70%)`;
+
+                document.body.appendChild(emoji);
+
+                // Remove after animation
+                setTimeout(() => {
+                    emoji.remove();
+                }, 5000);
+            }
+        }
+
+        // Handle name entry
+        document.getElementById('enterBtn').addEventListener('click', function() {
+            const lastNameInput = document.getElementById('lastNameInput').value.trim().toUpperCase();
+            const modal = document.getElementById('nameEntryModal');
+
+            if (lastNameInput === '') {
+                showAlert('Please enter your last name', 'white', '⚠️');
+                return;
+            }
+
+            // Check name in classmates
+            if (classmates[lastNameInput]) {
+                const classmate = classmates[lastNameInput];
+                const color = classmate.gender === 'male' ? '#4169e1' : '#ff2d75';
+                const emoji = classmate.gender === 'male' ? '👨‍🎓' : '👩‍🎓';
+
+                // Apply gender theme
+                document.body.classList.remove('male-theme', 'female-theme');
+                document.body.classList.add(classmate.style);
+
+                // Show welcome message
+                showAlert(`Welcome ${lastNameInput}, ${classmate.quote}`, color, emoji);
+
+                // Show classmate photo
+                showClassmatePhoto(classmate.photo);
+
+                // Close modal
+                setTimeout(() => {
+                    modal.style.display = 'none';
+
+                    // Launch confetti
+                    confetti({
+                        particleCount: 150,
+                        spread: 70,
+                        origin: { y: 0.6 },
+                        colors: [color],
+                        shapes: ['circle', 'star']
+                    });
+                }, 1000);
+            } else {
+                // Not a classmate
+                showAlert("You're not from Makanature class but you can come in", 'white', '👋', true);
+
+                // Close modal
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 1000);
+            }
+        });
+
+        // Show classmate photo with animation
+        function showClassmatePhoto(photoPath) {
+            const photoDisplay = document.getElementById('classmatePhotoDisplay');
+            photoDisplay.innerHTML = `<img src="${photoPath}" alt="Classmate photo">`;
+            photoDisplay.style.display = 'flex';
+
+            // Hide after 3 seconds
+            setTimeout(() => {
+                photoDisplay.style.display = 'none';
+            }, 3000);
+        }
+
+        // Enter key to submit
+        document.getElementById('lastNameInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('enterBtn').click();
+            }
+        });
+
+        // Custom alert function
+        function showAlert(message, color, emoji, isNotClassmate = false) {
+            const alert = document.createElement('div');
+            alert.className = 'custom-alert';
+            alert.style.backgroundColor = color;
+
+            if (isNotClassmate) {
+                alert.classList.add('alert-not-classmate');
+            }
+
+            alert.innerHTML = `<i>${emoji}</i> ${message}`;
+
+            document.body.appendChild(alert);
+
+            // Remove after animation
+            setTimeout(() => {
+                alert.remove();
+            }, 4000);
+        }
+
+        // Floating emojis to modal
+        const modalEmojis = ['🎓', '📚', '✨', '👨‍🎓', '👩‍🎓', '🏫', '🎉', '💖'];
+        const modal = document.getElementById('nameEntryModal');
+
+        for (let i = 0; i < 15; i++) {
+            const emoji = document.createElement('div');
+            emoji.className = 'floating-emoji';
+            emoji.textContent = modalEmojis[Math.floor(Math.random() * modalEmojis.length)];
+
+            // Random properties
+            const left = Math.random() * 100;
+            const top = Math.random() * 100;
+            const delay = Math.random() * 15;
+            const duration = 10 + Math.random() * 15;
+            const size = 20 + Math.random() * 20;
+            const color = Math.random() > 0.5 ? '#00f2ff' : '#ff00e6';
+
+            emoji.style.left = `${left}%`;
+            emoji.style.top = `${top}%`;
+            emoji.style.animationDelay = `-${delay}s`;
+            emoji.style.animationDuration = `${duration}s`;
+            emoji.style.fontSize = `${size}px`;
+            emoji.style.color = color;
+
+            modal.appendChild(emoji);
+        }
+
+        // Comments Section Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get elements
+            const commentForm = document.getElementById('commentForm');
+            const commentInput = document.getElementById('commentInput');
+            const commentsList = document.getElementById('commentsList');
+            const currentUserPic = document.getElementById('currentUserPic');
+            
+            // Load comments from localStorage
+            let comments = JSON.parse(localStorage.getItem('makanatureComments')) || [];
+            
+            // Display existing comments
+            displayComments();
+            
+            // Handle form submission
+            commentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const commentText = commentInput.value.trim();
+                if (!commentText) return;
+                
+                // Get user info from the name entry
+                const lastNameInput = document.getElementById('lastNameInput').value.trim().toUpperCase();
+                const isClassmate = classmates[lastNameInput] || false;
+                const gender = isClassmate ? classmates[lastNameInput].gender : 'unknown';
+                
+                // Create new comment
+                const newComment = {
+                    id: Date.now(),
+                    author: lastNameInput || 'Guest',
+                    text: commentText,
+                    gender: gender,
+                    timestamp: new Date().toISOString(),
+                    isClassmate: isClassmate
+                };
+                
+                // Add to comments array
+                comments.unshift(newComment);
+                
+                // Save to localStorage
+                localStorage.setItem('makanatureComments', JSON.stringify(comments));
+                
+                // Clear input
+                commentInput.value = '';
+                
+                // Display comments
+                displayComments();
+                
+                // Show thank you alert if classmate
+                if (isClassmate) {
+                    showThankYouAlert(lastNameInput);
+                }
+                
+                // Create floating hearts animation
+                createFloatingHearts();
+            });
+            
+            // Display comments function
+            function displayComments() {
+                if (comments.length === 0) {
+                    commentsList.innerHTML = '<div class="no-comments">No messages yet. Be the first to share your thoughts!</div>';
+                    return;
+                }
+                
+                commentsList.innerHTML = '';
+                
+                comments.forEach(comment => {
+                    const commentElement = document.createElement('div');
+                    commentElement.className = 'comment-item comment-enter';
+                    
+                    // Format date
+                    const commentDate = new Date(comment.timestamp);
+                    const formattedDate = commentDate.toLocaleString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+                    
+                    // Set profile picture - using logo for guests, classmate photos for classmates
+                    let profilePic = 'MakakalikasanIcon/Logo.png';
+                    if (comment.isClassmate && classmates[comment.author]) {
+                        profilePic = classmates[comment.author].photo;
+                    }
+                    
+                    commentElement.innerHTML = `
+                        <img src="${profilePic}" class="comment-avatar" alt="${comment.author}">
+                        <div class="comment-content">
+                            <div class="comment-header">
+                                <span class="comment-author ${comment.gender}">${comment.author}</span>
+                                <span class="comment-date">${formattedDate}</span>
+                            </div>
+                            <p class="comment-text">${comment.text}</p>
+                        </div>
+                    `;
+                    
+                    commentsList.appendChild(commentElement);
+                });
+            }
+            
+            // Create floating hearts animation
+            function createFloatingHearts() {
+                for (let i = 0; i < 10; i++) {
+                    const heart = document.createElement('div');
+                    heart.className = 'floating-heart';
+                    heart.innerHTML = '❤️';
+                    
+                    // Random properties
+                    const startX = Math.random() * window.innerWidth;
+                    const startY = window.innerHeight + 50;
+                    const endX = (Math.random() - 0.5) * 200;
+                    const endY = -Math.random() * 300 - 100;
+                    const size = 10 + Math.random() * 20;
+                    const duration = 2 + Math.random() * 2;
+                    const delay = Math.random() * 1;
+                    
+                    heart.style.left = `${startX}px`;
+                    heart.style.top = `${startY}px`;
+                    heart.style.fontSize = `${size}px`;
+                    heart.style.setProperty('--tx', `${endX}px`);
+                    heart.style.setProperty('--ty', `${endY}px`);
+                    heart.style.animationDuration = `${duration}s`;
+                    heart.style.animationDelay = `${delay}s`;
+                    
+                    document.body.appendChild(heart);
+                    
+                    // Remove after animation
+                    setTimeout(() => {
+                        heart.remove();
+                    }, duration * 1000);
+                }
+            }
+            
+            // Show thank you alert for classmates
+            function showThankYouAlert(lastName) {
+                const alert = document.createElement('div');
+                alert.className = 'thank-you-alert';
+                alert.innerHTML = `
+                    <div class="heart-emoji">💖</div>
+                    <h3>Thank You, ${lastName}!</h3>
+                    <p>My classmate in Makanature.</p>
+                `;
+                
+                document.body.appendChild(alert);
+                
+                // Remove after animation
+                setTimeout(() => {
+                    alert.remove();
+                }, 3500);
+            }
+            
+            // Update profile picture based on user
+            function updateProfilePicture() {
+                const lastNameInput = document.getElementById('lastNameInput').value.trim().toUpperCase();
+                if (classmates[lastNameInput]) {
+                    currentUserPic.src = classmates[lastNameInput].photo;
+                } else {
+                    currentUserPic.src = 'MakakalikasanIcon/Logo.png';
+                }
+            }
+            
+            // Watch for changes to the name input to update profile picture
+            document.getElementById('lastNameInput').addEventListener('input', updateProfilePicture);
+        });
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
